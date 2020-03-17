@@ -53,6 +53,8 @@
             this.Button_ExclusionsAdd = new System.Windows.Forms.Button();
             this.Button_ExclusionsRemove = new System.Windows.Forms.Button();
             this.Button_ExclusionsEdit = new System.Windows.Forms.Button();
+            this.Button_ExitWithoutSave = new System.Windows.Forms.Button();
+            this.Button_ExitWithSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_CompLevel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -270,11 +272,33 @@
             this.Button_ExclusionsEdit.Text = "Edit";
             this.Button_ExclusionsEdit.UseVisualStyleBackColor = true;
             // 
+            // Button_ExitWithoutSave
+            // 
+            this.Button_ExitWithoutSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_ExitWithoutSave.Location = new System.Drawing.Point(647, 191);
+            this.Button_ExitWithoutSave.Name = "Button_ExitWithoutSave";
+            this.Button_ExitWithoutSave.Size = new System.Drawing.Size(125, 30);
+            this.Button_ExitWithoutSave.TabIndex = 23;
+            this.Button_ExitWithoutSave.Text = "Exit Without Saving";
+            this.Button_ExitWithoutSave.UseVisualStyleBackColor = true;
+            // 
+            // Button_ExitWithSave
+            // 
+            this.Button_ExitWithSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_ExitWithSave.Location = new System.Drawing.Point(647, 155);
+            this.Button_ExitWithSave.Name = "Button_ExitWithSave";
+            this.Button_ExitWithSave.Size = new System.Drawing.Size(125, 30);
+            this.Button_ExitWithSave.TabIndex = 24;
+            this.Button_ExitWithSave.Text = "Save Item And Exit";
+            this.Button_ExitWithSave.UseVisualStyleBackColor = true;
+            // 
             // ArchivedItemEditingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 233);
+            this.Controls.Add(this.Button_ExitWithSave);
+            this.Controls.Add(this.Button_ExitWithoutSave);
             this.Controls.Add(this.Button_ExclusionsEdit);
             this.Controls.Add(this.Button_ExclusionsRemove);
             this.Controls.Add(this.Button_ExclusionsAdd);
@@ -299,7 +323,7 @@
             this.Controls.Add(this.Textbox_ItemName);
             this.Controls.Add(this.Label_ItemName);
             this.Name = "ArchivedItemEditingWindow";
-            this.Text = "ArchivedItemEditingWindow";
+            this.Text = "Editing item...";
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_CompLevel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -333,5 +357,7 @@
         private System.Windows.Forms.Button Button_ExclusionsAdd;
         private System.Windows.Forms.Button Button_ExclusionsRemove;
         private System.Windows.Forms.Button Button_ExclusionsEdit;
+        private System.Windows.Forms.Button Button_ExitWithoutSave;
+        private System.Windows.Forms.Button Button_ExitWithSave;
     }
 }
