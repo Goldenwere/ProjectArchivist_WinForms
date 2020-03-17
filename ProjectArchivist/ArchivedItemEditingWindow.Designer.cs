@@ -39,7 +39,7 @@
             this.Button_Destination = new System.Windows.Forms.Button();
             this.FolderBrowse_Destination = new System.Windows.Forms.FolderBrowserDialog();
             this.Label_FileName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Textbox_FileName = new System.Windows.Forms.TextBox();
             this.Label_Password = new System.Windows.Forms.Label();
             this.Textbox_Password = new System.Windows.Forms.TextBox();
             this.Label_CompLevel = new System.Windows.Forms.Label();
@@ -144,13 +144,13 @@
             this.Label_FileName.TabIndex = 8;
             this.Label_FileName.Text = "File Name";
             // 
-            // textBox1
+            // Textbox_FileName
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 90);
-            this.textBox1.MaxLength = 128;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 9;
+            this.Textbox_FileName.Location = new System.Drawing.Point(77, 90);
+            this.Textbox_FileName.MaxLength = 128;
+            this.Textbox_FileName.Name = "Textbox_FileName";
+            this.Textbox_FileName.Size = new System.Drawing.Size(200, 20);
+            this.Textbox_FileName.TabIndex = 9;
             // 
             // Label_Password
             // 
@@ -312,7 +312,7 @@
             this.Controls.Add(this.Label_CompLevel);
             this.Controls.Add(this.Textbox_Password);
             this.Controls.Add(this.Label_Password);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Textbox_FileName);
             this.Controls.Add(this.Label_FileName);
             this.Controls.Add(this.Button_Destination);
             this.Controls.Add(this.Textbox_DestinationPath);
@@ -343,7 +343,7 @@
         private System.Windows.Forms.Button Button_Destination;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowse_Destination;
         private System.Windows.Forms.Label Label_FileName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Textbox_FileName;
         private System.Windows.Forms.Label Label_Password;
         private System.Windows.Forms.TextBox Textbox_Password;
         private System.Windows.Forms.Label Label_CompLevel;

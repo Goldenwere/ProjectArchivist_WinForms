@@ -10,7 +10,7 @@ public class ArchivedItem
     public string destinationPath;
     public string fileName;
     public string password;
-    public string[] exclusions;
+    public List<string> exclusions;
     public Dictionary<string, bool> exclusionRecursiveDefinitions;      // -xr!(exclusion) vs -x!(exclusion)
     public ArchiveType type;                                            // -t(type)
     public int compressionLevel;                                        // -mx=

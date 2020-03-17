@@ -12,14 +12,19 @@ namespace ProjectArchivist
 {
     public partial class MainWindow : Form
     {
+        ArchivedItemEditingWindow itemEditingWindow;
+        Dictionary<string, ArchivedItem> archivedItems;
+
         public MainWindow()
         {
             InitializeComponent();
+            archivedItems = new Dictionary<string, ArchivedItem>();
         }
 
         private void Button_AddArchivedItem_Click(object sender, EventArgs e)
         {
-
+            itemEditingWindow = new ArchivedItemEditingWindow(true);
+            itemEditingWindow.ShowDialog();
         }
 
         private void Button_RemoveArchivedItem_Click(object sender, EventArgs e)
@@ -29,7 +34,12 @@ namespace ProjectArchivist
 
         private void Button_EditArchivedItem_Click(object sender, EventArgs e)
         {
-
+            if (List_ArchivedItems.SelectedItem != null)
+            {
+                itemEditingWindow = new ArchivedItemEditingWindow(false);
+                itemEditingWindow.LoadFields(archivedItems[(string)List_ArchivedItems.SelectedItem]);
+                itemEditingWindow.ShowDialog();
+            }
         }
     }
 }
