@@ -24,19 +24,34 @@ namespace ProjectArchivist
             "If excluding only the topmost \"obj\" folder, don't check this box.\n";
 
         public bool isAdding;
+        public ArchivedItemEditingWindow parent;
 
-        public ExclusionEditingWindow(bool _isAdding)
+        public ExclusionEditingWindow(bool _isAdding, ArchivedItemEditingWindow _parent)
         {
             InitializeComponent();
             Tooltip_Exclusion.SetToolTip(Textbox_Name, exclusionTooltip);
             Tooltip_Recursion.SetToolTip(Checkbox_IsRecursive, recursionTooltip);
             isAdding = _isAdding;
+            parent = _parent;
         }
 
         public void LoadFields(string name, bool isRecursive)
         {
             Textbox_Name.Text = name;
             Checkbox_IsRecursive.Checked = isRecursive;
+        }
+
+        private void Button_ExitWithSave_Click(object sender, EventArgs e)
+        {
+            parent.CreateExclusion(
+                Textbox_Name.Text,
+                Checkbox_IsRecursive.Checked);
+            Close();
+        }
+
+        private void Button_ExitWithoutSave_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace ProjectArchivist
 
         private void Button_ExclusionsAdd_Click(object sender, EventArgs e)
         {
-            exclusionWindow = new ExclusionEditingWindow(false);
+            exclusionWindow = new ExclusionEditingWindow(false, this);
             exclusionWindow.ShowDialog();
         }
 
@@ -61,7 +61,7 @@ namespace ProjectArchivist
         {
             if (List_Exclusions.SelectedItem != null)
             {
-                exclusionWindow = new ExclusionEditingWindow(false);
+                exclusionWindow = new ExclusionEditingWindow(false, this);
                 exclusionWindow.LoadFields(
                     (string)List_Exclusions.SelectedItem,
                     exclusionRecursiveDefinitions[(string)List_Exclusions.SelectedItem]);
@@ -90,11 +90,18 @@ namespace ProjectArchivist
                 typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
 
             parent.CreateItem(newItem);
+            Close();
         }
 
         private void Button_ExitWithoutSave_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        public void CreateExclusion(string name, bool isRecursive)
+        {
+            exclusionRecursiveDefinitions.Add(name, isRecursive);
+            List_Exclusions.Items.Add(name);
         }
     }
 }

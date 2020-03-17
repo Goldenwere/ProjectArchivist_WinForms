@@ -74,6 +74,7 @@
             this.Button_ExitWithSave.TabIndex = 26;
             this.Button_ExitWithSave.Text = "Save Item And Exit";
             this.Button_ExitWithSave.UseVisualStyleBackColor = true;
+            this.Button_ExitWithSave.Click += new System.EventHandler(this.Button_ExitWithSave_Click);
             // 
             // Button_ExitWithoutSave
             // 
@@ -84,6 +85,7 @@
             this.Button_ExitWithoutSave.TabIndex = 25;
             this.Button_ExitWithoutSave.Text = "Exit Without Saving";
             this.Button_ExitWithoutSave.UseVisualStyleBackColor = true;
+            this.Button_ExitWithoutSave.Click += new System.EventHandler(this.Button_ExitWithoutSave_Click);
             // 
             // ExclusionEditingWindow
             // 
