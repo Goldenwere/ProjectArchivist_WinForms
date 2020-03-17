@@ -94,5 +94,10 @@ namespace ProjectArchivist
                 item.destinationPath = Textbox_GlobalDestination.Text;
             }
         }
+
+        private void Button_CreateScript_Click(object sender, EventArgs e)
+        {
+            FileManagement.SaveFile(archivedItems.Values.ToList(), Textbox_BatchDestination.Text);
+        }
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="ExclusionEditingWindow.Designer.cs">
       <DependentUpon>ExclusionEditingWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileManagement.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

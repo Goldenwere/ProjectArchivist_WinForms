@@ -47,7 +47,7 @@ public enum CompressionMethod
     /// Lempel–Ziv–Markov but with better multithreading support 
     /// and occasionally worse compression ratios when on more than 4 threads
     /// </summary>
-    LZMAtwo,
+    LZMA2,
 
     /// <summary>
     /// Based off of Prediction by Partial Matching, best for text files

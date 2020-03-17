@@ -51,7 +51,7 @@
             this.Textbox_BatchDestination = new System.Windows.Forms.TextBox();
             this.Label_BatchDestination = new System.Windows.Forms.Label();
             this.Group_File = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Button_CreateScript = new System.Windows.Forms.Button();
             this.SaveFileDialog_Script = new System.Windows.Forms.SaveFileDialog();
             this.FolderBrowse_Destination = new System.Windows.Forms.FolderBrowserDialog();
             this.Group_ArchiveList.SuspendLayout();
@@ -294,14 +294,15 @@
             this.Group_File.TabStop = false;
             this.Group_File.Text = ".bat File Settings";
             // 
-            // button1
+            // Button_CreateScript
             // 
-            this.button1.Location = new System.Drawing.Point(12, 409);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(555, 50);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Create Script";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Button_CreateScript.Location = new System.Drawing.Point(12, 409);
+            this.Button_CreateScript.Name = "Button_CreateScript";
+            this.Button_CreateScript.Size = new System.Drawing.Size(555, 50);
+            this.Button_CreateScript.TabIndex = 28;
+            this.Button_CreateScript.Text = "Create Script";
+            this.Button_CreateScript.UseVisualStyleBackColor = true;
+            this.Button_CreateScript.Click += new System.EventHandler(this.Button_CreateScript_Click);
             // 
             // SaveFileDialog_Script
             // 
@@ -316,7 +317,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 464);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Button_CreateScript);
             this.Controls.Add(this.Group_File);
             this.Controls.Add(this.Group_Globals);
             this.Controls.Add(this.Group_ArchiveList);
@@ -353,7 +354,7 @@
         private System.Windows.Forms.TextBox Textbox_BatchDestination;
         private System.Windows.Forms.Label Label_BatchDestination;
         private System.Windows.Forms.GroupBox Group_File;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Button_CreateScript;
         private System.Windows.Forms.SaveFileDialog SaveFileDialog_Script;
         private System.Windows.Forms.Button Button_GlobalDestination;
         private System.Windows.Forms.TextBox Textbox_GlobalDestination;

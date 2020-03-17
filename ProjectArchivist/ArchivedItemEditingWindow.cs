@@ -137,11 +137,20 @@ namespace ProjectArchivist
         {
             exclusionRecursiveDefinitions.Add(name, isRecursive);
             List_Exclusions.Items.Add(name);
+            if (editingItem != null && editingItem.exclusions != null && editingItem.exclusionRecursiveDefinitions != null)
+            {
+                editingItem.exclusions.Add(name);
+                editingItem.exclusionRecursiveDefinitions.Add(name, isRecursive);
+            }
         }
 
         public void UpdatedEditedExclusion(string name, bool isRecursive)
         {
             exclusionRecursiveDefinitions[name] = isRecursive;
+            if (editingItem != null && editingItem.exclusions != null && editingItem.exclusionRecursiveDefinitions != null)
+            {
+                editingItem.exclusionRecursiveDefinitions[name] = isRecursive;
+            }
         }
 
         private void Button_Source_Click(object sender, EventArgs e)
