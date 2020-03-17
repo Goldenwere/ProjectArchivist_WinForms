@@ -38,7 +38,7 @@ namespace ProjectArchivist
         {
             InitializeComponent();
             Label_ErrorDesc.Text = errorMsg;
-            SoundPlayer sound = new SoundPlayer("C:\\Windows\\Media\\Windows Foreground.wav");
+            SoundPlayer sound = new SoundPlayer("sounds\\vintprox_error-notification-banjo.wav");
             sound.Play();
         }
 

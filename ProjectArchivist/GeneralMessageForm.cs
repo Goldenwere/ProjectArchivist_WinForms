@@ -17,7 +17,7 @@ namespace ProjectArchivist
         {
             InitializeComponent();
             Label_Status.Text = text;
-            SoundPlayer sound = new SoundPlayer("C:\\Windows\\Media\\.wav");
+            SoundPlayer sound = new SoundPlayer("sounds\\gabrielaraujo_powerup-success.wav");
             sound.Play();
         }
 
