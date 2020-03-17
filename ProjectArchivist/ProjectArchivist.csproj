@@ -53,6 +53,12 @@
     <Compile Include="ArchivedItemEditingWindow.Designer.cs">
       <DependentUpon>ArchivedItemEditingWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExclusionEditingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExclusionEditingWindow.Designer.cs">
+      <DependentUpon>ExclusionEditingWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArchivedItemEditingWindow.resx">
       <DependentUpon>ArchivedItemEditingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExclusionEditingWindow.resx">
+      <DependentUpon>ExclusionEditingWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
