@@ -41,7 +41,8 @@ namespace ProjectArchivist
 
         private void Button_RemoveArchivedItem_Click(object sender, EventArgs e)
         {
-
+            if (List_ArchivedItems.SelectedItem != null)
+                List_ArchivedItems.Items.Remove(List_ArchivedItems.SelectedItem);
         }
 
         private void Button_EditArchivedItem_Click(object sender, EventArgs e)

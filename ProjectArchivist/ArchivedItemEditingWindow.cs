@@ -63,7 +63,8 @@ namespace ProjectArchivist
 
         private void Button_ExclusionsRemove_Click(object sender, EventArgs e)
         {
-
+            if (List_Exclusions.SelectedItem != null)
+                List_Exclusions.Items.Remove(List_Exclusions.SelectedItem);
         }
 
         private void Button_ExclusionsEdit_Click(object sender, EventArgs e)
