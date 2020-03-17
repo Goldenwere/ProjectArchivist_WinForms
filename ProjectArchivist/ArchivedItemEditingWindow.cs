@@ -143,5 +143,17 @@ namespace ProjectArchivist
         {
             exclusionRecursiveDefinitions[name] = isRecursive;
         }
+
+        private void Button_Source_Click(object sender, EventArgs e)
+        {
+            FolderBrowse_Source.ShowDialog();
+            Textbox_SourcePath.Text = FolderBrowse_Source.SelectedPath;
+        }
+
+        private void Button_Destination_Click(object sender, EventArgs e)
+        {
+            FolderBrowse_Destination.ShowDialog();
+            Textbox_DestinationPath.Text = FolderBrowse_Destination.SelectedPath;
+        }
     }
 }

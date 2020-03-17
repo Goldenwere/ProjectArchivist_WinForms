@@ -104,6 +104,7 @@
             this.Button_Source.TabIndex = 4;
             this.Button_Source.Text = "Browse...";
             this.Button_Source.UseVisualStyleBackColor = true;
+            this.Button_Source.Click += new System.EventHandler(this.Button_Source_Click);
             // 
             // Label_DestinationPath
             // 
@@ -130,6 +131,7 @@
             this.Button_Destination.TabIndex = 7;
             this.Button_Destination.Text = "Browse...";
             this.Button_Destination.UseVisualStyleBackColor = true;
+            this.Button_Destination.Click += new System.EventHandler(this.Button_Destination_Click);
             // 
             // FolderBrowse_Destination
             // 

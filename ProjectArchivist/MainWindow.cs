@@ -55,5 +55,13 @@ namespace ProjectArchivist
         {
             List_ArchivedItems.Items[List_ArchivedItems.Items.IndexOf(item.itemName)] = item.itemName;
         }
+
+        private void Button_Destination_Click(object sender, EventArgs e)
+        {
+            if (!SaveFileDialog_Script.FileName.Contains(".bat"))
+                SaveFileDialog_Script.FileName += "*.bat";
+            SaveFileDialog_Script.ShowDialog();
+            Textbox_DestinationPath.Text = SaveFileDialog_Script.FileName;
+        }
     }
 }

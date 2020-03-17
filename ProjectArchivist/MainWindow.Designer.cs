@@ -42,17 +42,17 @@
             this.Textbox_Password = new System.Windows.Forms.TextBox();
             this.Label_Password = new System.Windows.Forms.Label();
             this.Group_Globals = new System.Windows.Forms.GroupBox();
-            this.Label_GlobalsWarning = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.Button_ApplyGlobals = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Label_GlobalsWarning = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.Button_Destination = new System.Windows.Forms.Button();
             this.Textbox_DestinationPath = new System.Windows.Forms.TextBox();
             this.Label_DestinationPath = new System.Windows.Forms.Label();
             this.Group_File = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SaveFileDialog_Script = new System.Windows.Forms.SaveFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.FolderBrowse_Destination = new System.Windows.Forms.FolderBrowserDialog();
             this.Group_ArchiveList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_CompLevel)).BeginInit();
@@ -206,6 +206,32 @@
             this.Group_Globals.TabStop = false;
             this.Group_Globals.Text = "Global Controls";
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(216, 138);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(60, 20);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "Browse...";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // Button_ApplyGlobals
+            // 
+            this.Button_ApplyGlobals.Location = new System.Drawing.Point(6, 259);
+            this.Button_ApplyGlobals.Name = "Button_ApplyGlobals";
+            this.Button_ApplyGlobals.Size = new System.Drawing.Size(270, 50);
+            this.Button_ApplyGlobals.TabIndex = 4;
+            this.Button_ApplyGlobals.Text = "Apply Globals";
+            this.Button_ApplyGlobals.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(71, 138);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(139, 20);
+            this.textBox1.TabIndex = 34;
+            // 
             // Label_GlobalsWarning
             // 
             this.Label_GlobalsWarning.AutoSize = true;
@@ -218,14 +244,14 @@
     "rently in the List of Archived Items. You must edit an existing item afterward i" +
     "n order to make exceptions.";
             // 
-            // Button_ApplyGlobals
+            // label1
             // 
-            this.Button_ApplyGlobals.Location = new System.Drawing.Point(6, 259);
-            this.Button_ApplyGlobals.Name = "Button_ApplyGlobals";
-            this.Button_ApplyGlobals.Size = new System.Drawing.Size(270, 50);
-            this.Button_ApplyGlobals.TabIndex = 4;
-            this.Button_ApplyGlobals.Text = "Apply Globals";
-            this.Button_ApplyGlobals.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 141);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Destination";
             // 
             // Button_Destination
             // 
@@ -236,6 +262,7 @@
             this.Button_Destination.TabIndex = 29;
             this.Button_Destination.Text = "Browse...";
             this.Button_Destination.UseVisualStyleBackColor = true;
+            this.Button_Destination.Click += new System.EventHandler(this.Button_Destination_Click);
             // 
             // Textbox_DestinationPath
             // 
@@ -274,31 +301,9 @@
             this.button1.Text = "Create Script";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // SaveFileDialog_Script
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(216, 138);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(60, 20);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Browse...";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(71, 138);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(139, 20);
-            this.textBox1.TabIndex = 34;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 141);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Destination";
+            this.SaveFileDialog_Script.Filter = "Batch Script File | *.bat";
             // 
             // FolderBrowse_Destination
             // 
