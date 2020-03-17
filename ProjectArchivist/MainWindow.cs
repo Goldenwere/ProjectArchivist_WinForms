@@ -21,5 +21,15 @@ namespace ProjectArchivist
         {
 
         }
+
+        private void Button_RemoveArchivedItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button_EditArchivedItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

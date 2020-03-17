@@ -8,7 +8,7 @@ public class ArchivedItem
     public string itemName;
     public string sourcePath;
     public string destinationPath;
-    public string destinationName;
+    public string fileName;
     public string password;
     public string[] exclusions;
     public Dictionary<string, bool> exclusionRecursiveDefinitions;      // -xr!(exclusion) vs -x!(exclusion)

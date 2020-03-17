@@ -28,19 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.List_ArchivedItems = new System.Windows.Forms.ListBox();
             this.Button_AddArchivedItem = new System.Windows.Forms.Button();
             this.Button_RemoveArchivedItem = new System.Windows.Forms.Button();
             this.Button_EditArchivedItem = new System.Windows.Forms.Button();
+            this.List_ArchivedItems = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // List_ArchivedItems
-            // 
-            this.List_ArchivedItems.FormattingEnabled = true;
-            this.List_ArchivedItems.Location = new System.Drawing.Point(12, 259);
-            this.List_ArchivedItems.Name = "List_ArchivedItems";
-            this.List_ArchivedItems.Size = new System.Drawing.Size(150, 290);
-            this.List_ArchivedItems.TabIndex = 0;
             // 
             // Button_AddArchivedItem
             // 
@@ -60,6 +52,7 @@
             this.Button_RemoveArchivedItem.TabIndex = 2;
             this.Button_RemoveArchivedItem.Text = "Remove";
             this.Button_RemoveArchivedItem.UseVisualStyleBackColor = true;
+            this.Button_RemoveArchivedItem.Click += new System.EventHandler(this.Button_RemoveArchivedItem_Click);
             // 
             // Button_EditArchivedItem
             // 
@@ -69,6 +62,15 @@
             this.Button_EditArchivedItem.TabIndex = 3;
             this.Button_EditArchivedItem.Text = "Edit";
             this.Button_EditArchivedItem.UseVisualStyleBackColor = true;
+            this.Button_EditArchivedItem.Click += new System.EventHandler(this.Button_EditArchivedItem_Click);
+            // 
+            // List_ArchivedItems
+            // 
+            this.List_ArchivedItems.FormattingEnabled = true;
+            this.List_ArchivedItems.Location = new System.Drawing.Point(12, 259);
+            this.List_ArchivedItems.Name = "List_ArchivedItems";
+            this.List_ArchivedItems.Size = new System.Drawing.Size(150, 290);
+            this.List_ArchivedItems.TabIndex = 0;
             // 
             // MainWindow
             // 
@@ -86,11 +88,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox List_ArchivedItems;
         private System.Windows.Forms.Button Button_AddArchivedItem;
         private System.Windows.Forms.Button Button_RemoveArchivedItem;
         private System.Windows.Forms.Button Button_EditArchivedItem;
+        private System.Windows.Forms.ListBox List_ArchivedItems;
     }
 }
 
