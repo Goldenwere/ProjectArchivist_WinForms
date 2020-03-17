@@ -49,20 +49,25 @@ namespace ProjectArchivist
 
         private void Button_ExitWithSave_Click(object sender, EventArgs e)
         {
-            if (ValidateEntry() == ErrorType.VALID)
+            switch(ValidateEntry())
             {
-                if (isAdding)
-                    parent.CreateExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
-                else
-                    parent.UpdatedEditedExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
+                case ErrorType.DUPLICATE:
+                    error = new ErrorPrompt(Errors.ERR_DUPL_EXCPTN);
+                    error.ShowDialog();
+                    break;
+                case ErrorType.MISSING:
+                    error = new ErrorPrompt(Errors.ERR_MISSING_EXCPTN);
+                    error.ShowDialog();
+                    break;
+                case ErrorType.VALID:
+                default:
+                    if (isAdding)
+                        parent.CreateExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
+                    else
+                        parent.UpdatedEditedExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
 
-                Close();
-            }
-
-            else
-            {
-                error = new ErrorPrompt(Errors.ERR_DUPL_EXCPTN);
-                error.ShowDialog();
+                    Close();
+                    break;
             }
         }
 
@@ -73,9 +78,12 @@ namespace ProjectArchivist
 
         private ErrorType ValidateEntry()
         {
+            if (Textbox_Name.Text == "")
+                return ErrorType.MISSING;
+
             List<string> entries = parent.ExclusionRecursiveDefinitions.Keys.ToList();
             foreach (string s in entries)
-                if (s == Textbox_Name.Text)
+                if (s == Textbox_Name.Text && isAdding)
                     return ErrorType.DUPLICATE;
 
             return ErrorType.VALID;

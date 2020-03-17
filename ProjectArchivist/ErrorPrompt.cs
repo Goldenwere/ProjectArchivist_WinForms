@@ -20,6 +20,7 @@ namespace ProjectArchivist
         public const string HINT_INVALID_ITEMS = "\nLook for invalid path/file characters";
         public const string ERR_GLOBAL_DUPL = "Cannot apply globals due to duplicate file names: \n";
         public const string ERR_DUPL_EXCPTN = "Exception already exists";
+        public const string ERR_MISSING_EXCPTN = "Missing entry for exception name field";
     }
 
     public enum ErrorType
