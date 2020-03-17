@@ -9,7 +9,7 @@ public static class FileManagement
 {
     const string MSG_BEGIN = 
         "@echo off\n" +
-        "echo This script was created with Project Archivist v1.0\n" +
+        "echo This script was created with Project Archivist v0.1\n" +
         "echo Beginning archiving...";
     const string MSG_CURRENT_PREFIX = "Archiving: ";
 

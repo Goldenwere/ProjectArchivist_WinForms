@@ -21,6 +21,21 @@ namespace ProjectArchivist
         public Dictionary<string, ArchivedItem> ArchivedItems
         { get { return archivedItems; } }
 
+        public string DefaultFileType
+        { get { return (string)Dropdown_GlobalFileType.SelectedItem; } }
+
+        public string DefaultMethod
+        { get { return (string)Dropdown_GlobalMethod.SelectedItem; } }
+
+        public int DefaultLevel
+        { get { return (int)Numeric_CompLevel.Value; } }
+
+        public string DefaultDestination
+        { get { return Textbox_GlobalDestination.Text; } }
+
+        public string DefaultPassword
+        { get { return Textbox_GlobalPassword.Text; } }
+
         public MainWindow()
         {
             InitializeComponent();

@@ -34,12 +34,11 @@
             this.Textbox_ItemName = new System.Windows.Forms.TextBox();
             this.Label_SourcePath = new System.Windows.Forms.Label();
             this.Textbox_SourcePath = new System.Windows.Forms.TextBox();
-            this.FolderBrowse_Source = new System.Windows.Forms.FolderBrowserDialog();
+            this.FolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             this.Button_Source = new System.Windows.Forms.Button();
             this.Label_DestinationPath = new System.Windows.Forms.Label();
             this.Textbox_DestinationPath = new System.Windows.Forms.TextBox();
             this.Button_Destination = new System.Windows.Forms.Button();
-            this.FolderBrowse_Destination = new System.Windows.Forms.FolderBrowserDialog();
             this.Label_FileName = new System.Windows.Forms.Label();
             this.Textbox_FileName = new System.Windows.Forms.TextBox();
             this.Label_Password = new System.Windows.Forms.Label();
@@ -99,9 +98,9 @@
             this.Textbox_SourcePath.TabIndex = 3;
             this.Tooltip_Fields.SetToolTip(this.Textbox_SourcePath, "The source folder that is to be archived");
             // 
-            // FolderBrowse_Source
+            // FolderBrowser
             // 
-            this.FolderBrowse_Source.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            this.FolderBrowser.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
             // Button_Source
             // 
@@ -141,10 +140,6 @@
             this.Button_Destination.Text = "Browse...";
             this.Button_Destination.UseVisualStyleBackColor = true;
             this.Button_Destination.Click += new System.EventHandler(this.Button_Destination_Click);
-            // 
-            // FolderBrowse_Destination
-            // 
-            this.FolderBrowse_Destination.RootFolder = System.Environment.SpecialFolder.MyComputer;
             // 
             // Label_FileName
             // 
@@ -375,12 +370,11 @@
         private System.Windows.Forms.TextBox Textbox_ItemName;
         private System.Windows.Forms.Label Label_SourcePath;
         private System.Windows.Forms.TextBox Textbox_SourcePath;
-        private System.Windows.Forms.FolderBrowserDialog FolderBrowse_Source;
+        private System.Windows.Forms.FolderBrowserDialog FolderBrowser;
         private System.Windows.Forms.Button Button_Source;
         private System.Windows.Forms.Label Label_DestinationPath;
         private System.Windows.Forms.TextBox Textbox_DestinationPath;
         private System.Windows.Forms.Button Button_Destination;
-        private System.Windows.Forms.FolderBrowserDialog FolderBrowse_Destination;
         private System.Windows.Forms.Label Label_FileName;
         private System.Windows.Forms.TextBox Textbox_FileName;
         private System.Windows.Forms.Label Label_Password;

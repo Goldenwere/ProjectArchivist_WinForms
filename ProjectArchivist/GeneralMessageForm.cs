@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace ProjectArchivist
 {
@@ -16,6 +17,8 @@ namespace ProjectArchivist
         {
             InitializeComponent();
             Label_Status.Text = text;
+            SoundPlayer sound = new SoundPlayer("C:\\Windows\\Media\\.wav");
+            sound.Play();
         }
 
         private void Button_Close_Click(object sender, EventArgs e)

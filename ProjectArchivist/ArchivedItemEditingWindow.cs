@@ -36,12 +36,26 @@ namespace ProjectArchivist
             string[] types = Enum.GetNames(typeof(ArchiveType));
             Dropdown_FileType.Items.AddRange(types);
             Dropdown_FileType.DropDownStyle = ComboBoxStyle.DropDownList;
-            Dropdown_FileType.SelectedIndex = 0;
 
             string[] methods = Enum.GetNames(typeof(CompressionMethod));
             Dropdown_Method.Items.AddRange(methods);
             Dropdown_Method.DropDownStyle = ComboBoxStyle.DropDownList;
-            Dropdown_Method.SelectedIndex = 0;
+
+            if (editingItem == null)
+            {
+                Textbox_ItemName.Enabled = true;
+                Dropdown_FileType.SelectedItem = parent.DefaultFileType;
+                Dropdown_Method.SelectedItem = parent.DefaultMethod;
+                Numeric_CompLevel.Value = parent.DefaultLevel;
+                Textbox_DestinationPath.Text = parent.DefaultDestination;
+                Textbox_Password.Text = parent.DefaultPassword;
+
+                if (System.IO.Directory.Exists(parent.DefaultDestination))
+                    FolderBrowser.SelectedPath = parent.DefaultDestination;
+            }
+
+            else
+                Textbox_ItemName.Enabled = false;
         }
 
         public void LoadFields(ArchivedItem itemToLoad)
@@ -190,14 +204,14 @@ namespace ProjectArchivist
 
         private void Button_Source_Click(object sender, EventArgs e)
         {
-            FolderBrowse_Source.ShowDialog();
-            Textbox_SourcePath.Text = FolderBrowse_Source.SelectedPath;
+            FolderBrowser.ShowDialog();
+            Textbox_SourcePath.Text = FolderBrowser.SelectedPath;
         }
 
         private void Button_Destination_Click(object sender, EventArgs e)
         {
-            FolderBrowse_Destination.ShowDialog();
-            Textbox_DestinationPath.Text = FolderBrowse_Destination.SelectedPath;
+            FolderBrowser.ShowDialog();
+            Textbox_DestinationPath.Text = FolderBrowser.SelectedPath;
         }
 
         private void HandleListErrors()
