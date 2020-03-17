@@ -53,6 +53,12 @@
     <Compile Include="ArchivedItemEditingWindow.Designer.cs">
       <DependentUpon>ArchivedItemEditingWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorPrompt.Designer.cs">
+      <DependentUpon>ErrorPrompt.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExclusionEditingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArchivedItemEditingWindow.resx">
       <DependentUpon>ArchivedItemEditingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorPrompt.resx">
+      <DependentUpon>ErrorPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExclusionEditingWindow.resx">
       <DependentUpon>ExclusionEditingWindow.cs</DependentUpon>
