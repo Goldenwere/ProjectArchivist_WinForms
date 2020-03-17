@@ -88,49 +88,62 @@ namespace ProjectArchivist
 
         private void Button_ExitWithSave_Click(object sender, EventArgs e)
         {
-            if (editingItem == null)
+            ErrorType errorType;
+            if ((errorType = VerifyRequiredFields(out List<string> invalidItems)) != ErrorType.VALID)
             {
-                ArchivedItem newItem = new ArchivedItem();
-                newItem.itemName = Textbox_ItemName.Text;
-                newItem.sourcePath = Textbox_SourcePath.Text;
-                newItem.destinationPath = Textbox_DestinationPath.Text;
-                newItem.fileName = Textbox_FileName.Text;
-                newItem.password = Textbox_Password.Text;
+                if (errorType == ErrorType.DUPLICATE)
+                    error = new ErrorPrompt(Errors.ERR_DUPL_ITEMS + string.Join("\n", invalidItems));
 
-                newItem.exclusions = new List<string>();
-                foreach (object o in List_Exclusions.Items)
-                    newItem.exclusions.Add((string)o);
-                newItem.exclusionRecursiveDefinitions = exclusionRecursiveDefinitions;
-
-                newItem.type = (ArchiveType)Enum.Parse(
-                    typeof(ArchiveType), Dropdown_FileType.SelectedItem.ToString());
-                newItem.compressionLevel = (int)Numeric_CompLevel.Value;
-                newItem.compressionMethod = (CompressionMethod)Enum.Parse(
-                    typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
-
-                parent.CreateItem(newItem);
+                else
+                    error = new ErrorPrompt(Errors.ERR_MISSING_ITEMS + string.Join("\n", invalidItems));
             }
 
             else
             {
-                editingItem.itemName = Textbox_ItemName.Text;
-                editingItem.sourcePath = Textbox_SourcePath.Text;
-                editingItem.destinationPath = Textbox_DestinationPath.Text;
-                editingItem.fileName = Textbox_FileName.Text;
-                editingItem.password = Textbox_Password.Text;
+                if (editingItem == null)
+                {
+                    ArchivedItem newItem = new ArchivedItem();
+                    newItem.itemName = Textbox_ItemName.Text;
+                    newItem.sourcePath = Textbox_SourcePath.Text;
+                    newItem.destinationPath = Textbox_DestinationPath.Text;
+                    newItem.fileName = Textbox_FileName.Text;
+                    newItem.password = Textbox_Password.Text;
 
-                editingItem.exclusions = new List<string>();
-                foreach (object o in List_Exclusions.Items)
-                    editingItem.exclusions.Add((string)o);
-                editingItem.exclusionRecursiveDefinitions = exclusionRecursiveDefinitions;
+                    newItem.exclusions = new List<string>();
+                    foreach (object o in List_Exclusions.Items)
+                        newItem.exclusions.Add((string)o);
+                    newItem.exclusionRecursiveDefinitions = exclusionRecursiveDefinitions;
 
-                editingItem.type = (ArchiveType)Enum.Parse(
-                    typeof(ArchiveType), Dropdown_FileType.SelectedItem.ToString());
-                editingItem.compressionLevel = (int)Numeric_CompLevel.Value;
-                editingItem.compressionMethod = (CompressionMethod)Enum.Parse(
-                    typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
+                    newItem.type = (ArchiveType)Enum.Parse(
+                        typeof(ArchiveType), Dropdown_FileType.SelectedItem.ToString());
+                    newItem.compressionLevel = (int)Numeric_CompLevel.Value;
+                    newItem.compressionMethod = (CompressionMethod)Enum.Parse(
+                        typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
 
-                parent.UpdateEditedItem(editingItem);
+                    parent.CreateItem(newItem);
+                }
+
+                else
+                {
+                    editingItem.itemName = Textbox_ItemName.Text;
+                    editingItem.sourcePath = Textbox_SourcePath.Text;
+                    editingItem.destinationPath = Textbox_DestinationPath.Text;
+                    editingItem.fileName = Textbox_FileName.Text;
+                    editingItem.password = Textbox_Password.Text;
+
+                    editingItem.exclusions = new List<string>();
+                    foreach (object o in List_Exclusions.Items)
+                        editingItem.exclusions.Add((string)o);
+                    editingItem.exclusionRecursiveDefinitions = exclusionRecursiveDefinitions;
+
+                    editingItem.type = (ArchiveType)Enum.Parse(
+                        typeof(ArchiveType), Dropdown_FileType.SelectedItem.ToString());
+                    editingItem.compressionLevel = (int)Numeric_CompLevel.Value;
+                    editingItem.compressionMethod = (CompressionMethod)Enum.Parse(
+                        typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
+
+                    parent.UpdateEditedItem(editingItem);
+                }
             }
 
             Close();
@@ -182,6 +195,48 @@ namespace ProjectArchivist
                 error = new ErrorPrompt(Errors.ERR_NO_ITEM_SEL);
 
             error.ShowDialog();
+        }
+
+        private ErrorType VerifyRequiredFields(out List<string> invalidItems)
+        {
+            invalidItems = new List<string>();
+
+            // First handle missing items
+            if (Textbox_ItemName.Text == null)
+                invalidItems.Add("- Item Name");
+
+            if (Textbox_SourcePath.Text == null)
+                invalidItems.Add("- Source Path");
+
+            if (Textbox_DestinationPath.Text == null)
+                invalidItems.Add("- Destination Path");
+
+            if (Textbox_FileName.Text == null)
+                invalidItems.Add("- File Name");
+
+            // Exit early for missing items
+            if (invalidItems.Count > 0)
+                return ErrorType.MISSING;
+
+            // Now handle duplicates
+            List<ArchivedItem> items = parent.ArchivedItems.Values.ToList();
+            foreach(ArchivedItem item in items)
+            {
+                if (Textbox_ItemName.Text == item.itemName &&
+                    editingItem != item)
+                    invalidItems.Add("- Item Name");
+
+                if (Textbox_FileName.Text == item.fileName &&
+                    Textbox_DestinationPath.Text == item.destinationPath &&
+                    editingItem != item)
+                    invalidItems.Add("- Destination + File Path");
+            }
+
+            if (invalidItems.Count > 0)
+                return ErrorType.DUPLICATE;
+
+            else
+                return ErrorType.VALID;
         }
     }
 }

@@ -17,6 +17,9 @@ namespace ProjectArchivist
         Dictionary<string, ArchivedItem> archivedItems;
         Dictionary<ArchivedItem, string> inverseSearchDict;
 
+        public Dictionary<string, ArchivedItem> ArchivedItems
+        { get { return archivedItems; } }
+
         public MainWindow()
         {
             InitializeComponent();

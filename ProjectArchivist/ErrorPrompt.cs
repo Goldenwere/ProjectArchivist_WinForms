@@ -14,6 +14,15 @@ namespace ProjectArchivist
     {
         public const string ERR_NO_ITEM_SEL = "No item currently selected";
         public const string ERR_NO_ITEMS_PRESENT = "There are no items in the list";
+        public const string ERR_DUPL_ITEMS = "Duplicate entries in fields: \n";
+        public const string ERR_MISSING_ITEMS = "Missing entries in fields: \n";
+    }
+
+    public enum ErrorType
+    {
+        VALID,
+        DUPLICATE,
+        MISSING
     }
 
     public partial class ErrorPrompt : Form
