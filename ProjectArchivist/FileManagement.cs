@@ -32,7 +32,7 @@ public static class FileManagement
     const string TYPE_BZIP2 = "-m0=BZip2";
     const string TYPE_PPMD = "-m0=PPMd";
 
-    public static void SaveFile(List<ArchivedItem> itemsToSave, string path)
+    public static Exception SaveFile(List<ArchivedItem> itemsToSave, string path)
     {
         StreamWriter writer = null;
 
@@ -98,6 +98,7 @@ public static class FileManagement
 
         catch (Exception e)
         {
+            return e;
         }
 
         finally
@@ -105,5 +106,7 @@ public static class FileManagement
             if (writer != null)
                 writer.Close();
         }
+
+        return null;
     }
 }

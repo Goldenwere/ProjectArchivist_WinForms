@@ -14,6 +14,7 @@ namespace ProjectArchivist
     {
         ArchivedItemEditingWindow itemEditingWindow;
         ErrorPrompt error;
+        GeneralMessageForm msg;
         Dictionary<string, ArchivedItem> archivedItems;
         Dictionary<ArchivedItem, string> inverseSearchDict;
 
@@ -118,7 +119,15 @@ namespace ProjectArchivist
 
         private void Button_CreateScript_Click(object sender, EventArgs e)
         {
-            FileManagement.SaveFile(archivedItems.Values.ToList(), Textbox_BatchDestination.Text);
+            Exception ex = FileManagement.SaveFile(archivedItems.Values.ToList(), Textbox_BatchDestination.Text);
+
+            if (ex != null)
+                msg = new GeneralMessageForm("Error: " + ex.Message);
+
+            else
+                msg = new GeneralMessageForm("Created script successfully");
+
+            msg.ShowDialog();
         }
 
         private void HandleListErrors()
