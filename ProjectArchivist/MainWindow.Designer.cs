@@ -34,22 +34,22 @@
             this.List_ArchivedItems = new System.Windows.Forms.ListBox();
             this.Group_ArchiveList = new System.Windows.Forms.GroupBox();
             this.Label_Method = new System.Windows.Forms.Label();
-            this.Dropdown_Method = new System.Windows.Forms.ComboBox();
+            this.Dropdown_GlobalMethod = new System.Windows.Forms.ComboBox();
             this.Label_Type = new System.Windows.Forms.Label();
-            this.Dropdown_FileType = new System.Windows.Forms.ComboBox();
+            this.Dropdown_GlobalFileType = new System.Windows.Forms.ComboBox();
             this.Numeric_CompLevel = new System.Windows.Forms.NumericUpDown();
             this.Label_CompLevel = new System.Windows.Forms.Label();
-            this.Textbox_Password = new System.Windows.Forms.TextBox();
+            this.Textbox_GlobalPassword = new System.Windows.Forms.TextBox();
             this.Label_Password = new System.Windows.Forms.Label();
             this.Group_Globals = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Button_GlobalDestination = new System.Windows.Forms.Button();
             this.Button_ApplyGlobals = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Textbox_GlobalDestination = new System.Windows.Forms.TextBox();
             this.Label_GlobalsWarning = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Button_Destination = new System.Windows.Forms.Button();
-            this.Textbox_DestinationPath = new System.Windows.Forms.TextBox();
-            this.Label_DestinationPath = new System.Windows.Forms.Label();
+            this.Label_GlobalDestination = new System.Windows.Forms.Label();
+            this.Button_BatchDestination = new System.Windows.Forms.Button();
+            this.Textbox_BatchDestination = new System.Windows.Forms.TextBox();
+            this.Label_BatchDestination = new System.Windows.Forms.Label();
             this.Group_File = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SaveFileDialog_Script = new System.Windows.Forms.SaveFileDialog();
@@ -120,13 +120,13 @@
             this.Label_Method.TabIndex = 25;
             this.Label_Method.Text = "Method";
             // 
-            // Dropdown_Method
+            // Dropdown_GlobalMethod
             // 
-            this.Dropdown_Method.FormattingEnabled = true;
-            this.Dropdown_Method.Location = new System.Drawing.Point(71, 93);
-            this.Dropdown_Method.Name = "Dropdown_Method";
-            this.Dropdown_Method.Size = new System.Drawing.Size(200, 21);
-            this.Dropdown_Method.TabIndex = 24;
+            this.Dropdown_GlobalMethod.FormattingEnabled = true;
+            this.Dropdown_GlobalMethod.Location = new System.Drawing.Point(71, 93);
+            this.Dropdown_GlobalMethod.Name = "Dropdown_GlobalMethod";
+            this.Dropdown_GlobalMethod.Size = new System.Drawing.Size(200, 21);
+            this.Dropdown_GlobalMethod.TabIndex = 24;
             // 
             // Label_Type
             // 
@@ -137,13 +137,13 @@
             this.Label_Type.TabIndex = 23;
             this.Label_Type.Text = "File Type";
             // 
-            // Dropdown_FileType
+            // Dropdown_GlobalFileType
             // 
-            this.Dropdown_FileType.FormattingEnabled = true;
-            this.Dropdown_FileType.Location = new System.Drawing.Point(71, 40);
-            this.Dropdown_FileType.Name = "Dropdown_FileType";
-            this.Dropdown_FileType.Size = new System.Drawing.Size(200, 21);
-            this.Dropdown_FileType.TabIndex = 22;
+            this.Dropdown_GlobalFileType.FormattingEnabled = true;
+            this.Dropdown_GlobalFileType.Location = new System.Drawing.Point(71, 40);
+            this.Dropdown_GlobalFileType.Name = "Dropdown_GlobalFileType";
+            this.Dropdown_GlobalFileType.Size = new System.Drawing.Size(200, 21);
+            this.Dropdown_GlobalFileType.TabIndex = 22;
             // 
             // Numeric_CompLevel
             // 
@@ -166,14 +166,14 @@
             this.Label_CompLevel.TabIndex = 20;
             this.Label_CompLevel.Text = "Compression Level";
             // 
-            // Textbox_Password
+            // Textbox_GlobalPassword
             // 
-            this.Textbox_Password.Location = new System.Drawing.Point(71, 13);
-            this.Textbox_Password.MaxLength = 128;
-            this.Textbox_Password.Name = "Textbox_Password";
-            this.Textbox_Password.Size = new System.Drawing.Size(200, 20);
-            this.Textbox_Password.TabIndex = 19;
-            this.Textbox_Password.UseSystemPasswordChar = true;
+            this.Textbox_GlobalPassword.Location = new System.Drawing.Point(71, 13);
+            this.Textbox_GlobalPassword.MaxLength = 128;
+            this.Textbox_GlobalPassword.Name = "Textbox_GlobalPassword";
+            this.Textbox_GlobalPassword.Size = new System.Drawing.Size(200, 20);
+            this.Textbox_GlobalPassword.TabIndex = 19;
+            this.Textbox_GlobalPassword.UseSystemPasswordChar = true;
             // 
             // Label_Password
             // 
@@ -186,19 +186,19 @@
             // 
             // Group_Globals
             // 
-            this.Group_Globals.Controls.Add(this.button2);
+            this.Group_Globals.Controls.Add(this.Button_GlobalDestination);
             this.Group_Globals.Controls.Add(this.Button_ApplyGlobals);
-            this.Group_Globals.Controls.Add(this.textBox1);
+            this.Group_Globals.Controls.Add(this.Textbox_GlobalDestination);
             this.Group_Globals.Controls.Add(this.Label_GlobalsWarning);
-            this.Group_Globals.Controls.Add(this.label1);
+            this.Group_Globals.Controls.Add(this.Label_GlobalDestination);
             this.Group_Globals.Controls.Add(this.Label_Password);
             this.Group_Globals.Controls.Add(this.Label_Method);
-            this.Group_Globals.Controls.Add(this.Textbox_Password);
-            this.Group_Globals.Controls.Add(this.Dropdown_Method);
+            this.Group_Globals.Controls.Add(this.Textbox_GlobalPassword);
+            this.Group_Globals.Controls.Add(this.Dropdown_GlobalMethod);
             this.Group_Globals.Controls.Add(this.Label_CompLevel);
             this.Group_Globals.Controls.Add(this.Label_Type);
             this.Group_Globals.Controls.Add(this.Numeric_CompLevel);
-            this.Group_Globals.Controls.Add(this.Dropdown_FileType);
+            this.Group_Globals.Controls.Add(this.Dropdown_GlobalFileType);
             this.Group_Globals.Location = new System.Drawing.Point(285, 87);
             this.Group_Globals.Name = "Group_Globals";
             this.Group_Globals.Size = new System.Drawing.Size(282, 316);
@@ -206,15 +206,16 @@
             this.Group_Globals.TabStop = false;
             this.Group_Globals.Text = "Global Controls";
             // 
-            // button2
+            // Button_GlobalDestination
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(216, 138);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(60, 20);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Browse...";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Button_GlobalDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_GlobalDestination.Location = new System.Drawing.Point(216, 138);
+            this.Button_GlobalDestination.Name = "Button_GlobalDestination";
+            this.Button_GlobalDestination.Size = new System.Drawing.Size(60, 20);
+            this.Button_GlobalDestination.TabIndex = 35;
+            this.Button_GlobalDestination.Text = "Browse...";
+            this.Button_GlobalDestination.UseVisualStyleBackColor = true;
+            this.Button_GlobalDestination.Click += new System.EventHandler(this.Button_GlobalDestination_Click);
             // 
             // Button_ApplyGlobals
             // 
@@ -224,13 +225,14 @@
             this.Button_ApplyGlobals.TabIndex = 4;
             this.Button_ApplyGlobals.Text = "Apply Globals";
             this.Button_ApplyGlobals.UseVisualStyleBackColor = true;
+            this.Button_ApplyGlobals.Click += new System.EventHandler(this.Button_ApplyGlobals_Click);
             // 
-            // textBox1
+            // Textbox_GlobalDestination
             // 
-            this.textBox1.Location = new System.Drawing.Point(71, 138);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(139, 20);
-            this.textBox1.TabIndex = 34;
+            this.Textbox_GlobalDestination.Location = new System.Drawing.Point(71, 138);
+            this.Textbox_GlobalDestination.Name = "Textbox_GlobalDestination";
+            this.Textbox_GlobalDestination.Size = new System.Drawing.Size(139, 20);
+            this.Textbox_GlobalDestination.TabIndex = 34;
             // 
             // Label_GlobalsWarning
             // 
@@ -244,47 +246,47 @@
     "rently in the List of Archived Items. You must edit an existing item afterward i" +
     "n order to make exceptions.";
             // 
-            // label1
+            // Label_GlobalDestination
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 141);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Destination";
+            this.Label_GlobalDestination.AutoSize = true;
+            this.Label_GlobalDestination.Location = new System.Drawing.Point(6, 141);
+            this.Label_GlobalDestination.Name = "Label_GlobalDestination";
+            this.Label_GlobalDestination.Size = new System.Drawing.Size(60, 13);
+            this.Label_GlobalDestination.TabIndex = 33;
+            this.Label_GlobalDestination.Text = "Destination";
             // 
-            // Button_Destination
+            // Button_BatchDestination
             // 
-            this.Button_Destination.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button_Destination.Location = new System.Drawing.Point(489, 12);
-            this.Button_Destination.Name = "Button_Destination";
-            this.Button_Destination.Size = new System.Drawing.Size(60, 20);
-            this.Button_Destination.TabIndex = 29;
-            this.Button_Destination.Text = "Browse...";
-            this.Button_Destination.UseVisualStyleBackColor = true;
-            this.Button_Destination.Click += new System.EventHandler(this.Button_Destination_Click);
+            this.Button_BatchDestination.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Button_BatchDestination.Location = new System.Drawing.Point(489, 12);
+            this.Button_BatchDestination.Name = "Button_BatchDestination";
+            this.Button_BatchDestination.Size = new System.Drawing.Size(60, 20);
+            this.Button_BatchDestination.TabIndex = 29;
+            this.Button_BatchDestination.Text = "Browse...";
+            this.Button_BatchDestination.UseVisualStyleBackColor = true;
+            this.Button_BatchDestination.Click += new System.EventHandler(this.Button_BatchDestination_Click);
             // 
-            // Textbox_DestinationPath
+            // Textbox_BatchDestination
             // 
-            this.Textbox_DestinationPath.Location = new System.Drawing.Point(78, 13);
-            this.Textbox_DestinationPath.Name = "Textbox_DestinationPath";
-            this.Textbox_DestinationPath.Size = new System.Drawing.Size(405, 20);
-            this.Textbox_DestinationPath.TabIndex = 28;
+            this.Textbox_BatchDestination.Location = new System.Drawing.Point(78, 13);
+            this.Textbox_BatchDestination.Name = "Textbox_BatchDestination";
+            this.Textbox_BatchDestination.Size = new System.Drawing.Size(405, 20);
+            this.Textbox_BatchDestination.TabIndex = 28;
             // 
-            // Label_DestinationPath
+            // Label_BatchDestination
             // 
-            this.Label_DestinationPath.AutoSize = true;
-            this.Label_DestinationPath.Location = new System.Drawing.Point(6, 16);
-            this.Label_DestinationPath.Name = "Label_DestinationPath";
-            this.Label_DestinationPath.Size = new System.Drawing.Size(66, 13);
-            this.Label_DestinationPath.TabIndex = 27;
-            this.Label_DestinationPath.Text = "Save File As";
+            this.Label_BatchDestination.AutoSize = true;
+            this.Label_BatchDestination.Location = new System.Drawing.Point(6, 16);
+            this.Label_BatchDestination.Name = "Label_BatchDestination";
+            this.Label_BatchDestination.Size = new System.Drawing.Size(66, 13);
+            this.Label_BatchDestination.TabIndex = 27;
+            this.Label_BatchDestination.Text = "Save File As";
             // 
             // Group_File
             // 
-            this.Group_File.Controls.Add(this.Label_DestinationPath);
-            this.Group_File.Controls.Add(this.Textbox_DestinationPath);
-            this.Group_File.Controls.Add(this.Button_Destination);
+            this.Group_File.Controls.Add(this.Label_BatchDestination);
+            this.Group_File.Controls.Add(this.Textbox_BatchDestination);
+            this.Group_File.Controls.Add(this.Button_BatchDestination);
             this.Group_File.Location = new System.Drawing.Point(12, 12);
             this.Group_File.Name = "Group_File";
             this.Group_File.Size = new System.Drawing.Size(555, 44);
@@ -337,25 +339,25 @@
         private System.Windows.Forms.ListBox List_ArchivedItems;
         private System.Windows.Forms.GroupBox Group_ArchiveList;
         private System.Windows.Forms.Label Label_Method;
-        private System.Windows.Forms.ComboBox Dropdown_Method;
+        private System.Windows.Forms.ComboBox Dropdown_GlobalMethod;
         private System.Windows.Forms.Label Label_Type;
-        private System.Windows.Forms.ComboBox Dropdown_FileType;
+        private System.Windows.Forms.ComboBox Dropdown_GlobalFileType;
         private System.Windows.Forms.NumericUpDown Numeric_CompLevel;
         private System.Windows.Forms.Label Label_CompLevel;
-        private System.Windows.Forms.TextBox Textbox_Password;
+        private System.Windows.Forms.TextBox Textbox_GlobalPassword;
         private System.Windows.Forms.Label Label_Password;
         private System.Windows.Forms.GroupBox Group_Globals;
         private System.Windows.Forms.Label Label_GlobalsWarning;
         private System.Windows.Forms.Button Button_ApplyGlobals;
-        private System.Windows.Forms.Button Button_Destination;
-        private System.Windows.Forms.TextBox Textbox_DestinationPath;
-        private System.Windows.Forms.Label Label_DestinationPath;
+        private System.Windows.Forms.Button Button_BatchDestination;
+        private System.Windows.Forms.TextBox Textbox_BatchDestination;
+        private System.Windows.Forms.Label Label_BatchDestination;
         private System.Windows.Forms.GroupBox Group_File;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.SaveFileDialog SaveFileDialog_Script;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Button_GlobalDestination;
+        private System.Windows.Forms.TextBox Textbox_GlobalDestination;
+        private System.Windows.Forms.Label Label_GlobalDestination;
         private System.Windows.Forms.FolderBrowserDialog FolderBrowse_Destination;
     }
 }

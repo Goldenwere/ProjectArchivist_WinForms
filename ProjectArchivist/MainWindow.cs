@@ -21,6 +21,16 @@ namespace ProjectArchivist
             InitializeComponent();
             archivedItems = new Dictionary<string, ArchivedItem>();
             inverseSearchDict = new Dictionary<ArchivedItem, string>();
+
+            string[] types = Enum.GetNames(typeof(ArchiveType));
+            Dropdown_GlobalFileType.Items.AddRange(types);
+            Dropdown_GlobalFileType.DropDownStyle = ComboBoxStyle.DropDownList;
+            Dropdown_GlobalFileType.SelectedIndex = 0;
+
+            string[] methods = Enum.GetNames(typeof(CompressionMethod));
+            Dropdown_GlobalMethod.Items.AddRange(methods);
+            Dropdown_GlobalMethod.DropDownStyle = ComboBoxStyle.DropDownList;
+            Dropdown_GlobalMethod.SelectedIndex = 0;
         }
 
         private void Button_AddArchivedItem_Click(object sender, EventArgs e)
@@ -56,12 +66,33 @@ namespace ProjectArchivist
             List_ArchivedItems.Items[List_ArchivedItems.Items.IndexOf(item.itemName)] = item.itemName;
         }
 
-        private void Button_Destination_Click(object sender, EventArgs e)
+        private void Button_BatchDestination_Click(object sender, EventArgs e)
         {
             if (!SaveFileDialog_Script.FileName.Contains(".bat"))
                 SaveFileDialog_Script.FileName += "*.bat";
             SaveFileDialog_Script.ShowDialog();
-            Textbox_DestinationPath.Text = SaveFileDialog_Script.FileName;
+            Textbox_BatchDestination.Text = SaveFileDialog_Script.FileName;
+        }
+
+        private void Button_GlobalDestination_Click(object sender, EventArgs e)
+        {
+            FolderBrowse_Destination.ShowDialog();
+            Textbox_GlobalDestination.Text = FolderBrowse_Destination.SelectedPath;
+        }
+
+        private void Button_ApplyGlobals_Click(object sender, EventArgs e)
+        {
+            List<ArchivedItem> items = archivedItems.Values.ToList();
+            foreach(ArchivedItem item in items)
+            {
+                item.password = Textbox_GlobalPassword.Text;
+                item.type = (ArchiveType)Enum.Parse(
+                    typeof(ArchiveType), Dropdown_GlobalFileType.SelectedItem.ToString());
+                item.compressionMethod = (CompressionMethod)Enum.Parse(
+                    typeof(CompressionMethod), Dropdown_GlobalMethod.SelectedItem.ToString());
+                item.compressionLevel = (int)Numeric_CompLevel.Value;
+                item.destinationPath = Textbox_GlobalDestination.Text;
+            }
         }
     }
 }
