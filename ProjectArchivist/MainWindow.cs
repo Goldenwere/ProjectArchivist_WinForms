@@ -41,5 +41,11 @@ namespace ProjectArchivist
                 itemEditingWindow.ShowDialog();
             }
         }
+
+        public void CreateItem(ArchivedItem newItem)
+        {
+            archivedItems.Add(newItem.itemName, newItem);
+            List_ArchivedItems.Items.Add(newItem.itemName);
+        }
     }
 }

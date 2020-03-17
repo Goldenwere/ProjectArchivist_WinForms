@@ -77,15 +77,19 @@ namespace ProjectArchivist
             newItem.destinationPath = Textbox_DestinationPath.Text;
             newItem.fileName = Textbox_FileName.Text;
             newItem.password = Textbox_Password.Text;
+
             newItem.exclusions = new List<string>();
             foreach (object o in List_Exclusions.Items)
                 newItem.exclusions.Add((string)o);
             newItem.exclusionRecursiveDefinitions = exclusionRecursiveDefinitions;
+
             newItem.type = (ArchiveType)Enum.Parse(
                 typeof(ArchiveType), Dropdown_FileType.SelectedItem.ToString());
             newItem.compressionLevel = (int)Numeric_CompLevel.Value;
             newItem.compressionMethod = (CompressionMethod)Enum.Parse(
                 typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
+
+            parent.CreateItem(newItem);
         }
 
         private void Button_ExitWithoutSave_Click(object sender, EventArgs e)
