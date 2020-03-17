@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Label_ItemName = new System.Windows.Forms.Label();
             this.Textbox_ItemName = new System.Windows.Forms.TextBox();
             this.Label_SourcePath = new System.Windows.Forms.Label();
@@ -55,6 +56,8 @@
             this.Button_ExclusionsEdit = new System.Windows.Forms.Button();
             this.Button_ExitWithoutSave = new System.Windows.Forms.Button();
             this.Button_ExitWithSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Tooltip_Fields = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_CompLevel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,9 +66,9 @@
             this.Label_ItemName.AutoSize = true;
             this.Label_ItemName.Location = new System.Drawing.Point(12, 16);
             this.Label_ItemName.Name = "Label_ItemName";
-            this.Label_ItemName.Size = new System.Drawing.Size(58, 13);
+            this.Label_ItemName.Size = new System.Drawing.Size(62, 13);
             this.Label_ItemName.TabIndex = 0;
-            this.Label_ItemName.Text = "Item Name";
+            this.Label_ItemName.Text = "Item Name*";
             // 
             // Textbox_ItemName
             // 
@@ -74,15 +77,18 @@
             this.Textbox_ItemName.Name = "Textbox_ItemName";
             this.Textbox_ItemName.Size = new System.Drawing.Size(200, 20);
             this.Textbox_ItemName.TabIndex = 1;
+            this.Tooltip_Fields.SetToolTip(this.Textbox_ItemName, "Unique identifier for individual list items. This is displayed in the list of arc" +
+        "hived items and is displayed when echoing messages to the console in the resulti" +
+        "ng script.");
             // 
             // Label_SourcePath
             // 
             this.Label_SourcePath.AutoSize = true;
             this.Label_SourcePath.Location = new System.Drawing.Point(12, 41);
             this.Label_SourcePath.Name = "Label_SourcePath";
-            this.Label_SourcePath.Size = new System.Drawing.Size(41, 13);
+            this.Label_SourcePath.Size = new System.Drawing.Size(45, 13);
             this.Label_SourcePath.TabIndex = 2;
-            this.Label_SourcePath.Text = "Source";
+            this.Label_SourcePath.Text = "Source*";
             // 
             // Textbox_SourcePath
             // 
@@ -90,6 +96,7 @@
             this.Textbox_SourcePath.Name = "Textbox_SourcePath";
             this.Textbox_SourcePath.Size = new System.Drawing.Size(200, 20);
             this.Textbox_SourcePath.TabIndex = 3;
+            this.Tooltip_Fields.SetToolTip(this.Textbox_SourcePath, "The source folder that is to be archived");
             // 
             // FolderBrowse_Source
             // 
@@ -111,9 +118,9 @@
             this.Label_DestinationPath.AutoSize = true;
             this.Label_DestinationPath.Location = new System.Drawing.Point(12, 67);
             this.Label_DestinationPath.Name = "Label_DestinationPath";
-            this.Label_DestinationPath.Size = new System.Drawing.Size(60, 13);
+            this.Label_DestinationPath.Size = new System.Drawing.Size(64, 13);
             this.Label_DestinationPath.TabIndex = 5;
-            this.Label_DestinationPath.Text = "Destination";
+            this.Label_DestinationPath.Text = "Destination*";
             // 
             // Textbox_DestinationPath
             // 
@@ -121,6 +128,7 @@
             this.Textbox_DestinationPath.Name = "Textbox_DestinationPath";
             this.Textbox_DestinationPath.Size = new System.Drawing.Size(200, 20);
             this.Textbox_DestinationPath.TabIndex = 6;
+            this.Tooltip_Fields.SetToolTip(this.Textbox_DestinationPath, "The folder that the archived file will be saved into");
             // 
             // Button_Destination
             // 
@@ -142,9 +150,9 @@
             this.Label_FileName.AutoSize = true;
             this.Label_FileName.Location = new System.Drawing.Point(12, 93);
             this.Label_FileName.Name = "Label_FileName";
-            this.Label_FileName.Size = new System.Drawing.Size(54, 13);
+            this.Label_FileName.Size = new System.Drawing.Size(58, 13);
             this.Label_FileName.TabIndex = 8;
-            this.Label_FileName.Text = "File Name";
+            this.Label_FileName.Text = "File Name*";
             // 
             // Textbox_FileName
             // 
@@ -153,6 +161,7 @@
             this.Textbox_FileName.Name = "Textbox_FileName";
             this.Textbox_FileName.Size = new System.Drawing.Size(200, 20);
             this.Textbox_FileName.TabIndex = 9;
+            this.Tooltip_Fields.SetToolTip(this.Textbox_FileName, "The name of the resulting output file; typing an extension is unecessary");
             // 
             // Label_Password
             // 
@@ -170,6 +179,7 @@
             this.Textbox_Password.Name = "Textbox_Password";
             this.Textbox_Password.Size = new System.Drawing.Size(200, 20);
             this.Textbox_Password.TabIndex = 11;
+            this.Tooltip_Fields.SetToolTip(this.Textbox_Password, "The password required to open the archive; this field is optional");
             this.Textbox_Password.UseSystemPasswordChar = true;
             // 
             // Label_CompLevel
@@ -177,9 +187,9 @@
             this.Label_CompLevel.AutoSize = true;
             this.Label_CompLevel.Location = new System.Drawing.Point(12, 172);
             this.Label_CompLevel.Name = "Label_CompLevel";
-            this.Label_CompLevel.Size = new System.Drawing.Size(96, 13);
+            this.Label_CompLevel.Size = new System.Drawing.Size(100, 13);
             this.Label_CompLevel.TabIndex = 12;
-            this.Label_CompLevel.Text = "Compression Level";
+            this.Label_CompLevel.Text = "Compression Level*";
             // 
             // Numeric_CompLevel
             // 
@@ -192,6 +202,8 @@
             this.Numeric_CompLevel.Name = "Numeric_CompLevel";
             this.Numeric_CompLevel.Size = new System.Drawing.Size(100, 20);
             this.Numeric_CompLevel.TabIndex = 13;
+            this.Tooltip_Fields.SetToolTip(this.Numeric_CompLevel, "The level of compression to apply to the file; 0 means no compression, 9 is the h" +
+        "ighest level of compression");
             // 
             // Dropdown_FileType
             // 
@@ -200,15 +212,16 @@
             this.Dropdown_FileType.Name = "Dropdown_FileType";
             this.Dropdown_FileType.Size = new System.Drawing.Size(200, 21);
             this.Dropdown_FileType.TabIndex = 14;
+            this.Tooltip_Fields.SetToolTip(this.Dropdown_FileType, "The extension/archive type to save to");
             // 
             // Label_Type
             // 
             this.Label_Type.AutoSize = true;
             this.Label_Type.Location = new System.Drawing.Point(12, 146);
             this.Label_Type.Name = "Label_Type";
-            this.Label_Type.Size = new System.Drawing.Size(50, 13);
+            this.Label_Type.Size = new System.Drawing.Size(54, 13);
             this.Label_Type.TabIndex = 15;
-            this.Label_Type.Text = "File Type";
+            this.Label_Type.Text = "File Type*";
             // 
             // Dropdown_Method
             // 
@@ -217,15 +230,17 @@
             this.Dropdown_Method.Name = "Dropdown_Method";
             this.Dropdown_Method.Size = new System.Drawing.Size(200, 21);
             this.Dropdown_Method.TabIndex = 16;
+            this.Tooltip_Fields.SetToolTip(this.Dropdown_Method, "The compression method to apply to the file; does not apply when compression leve" +
+        "l is 0");
             // 
             // Label_Method
             // 
             this.Label_Method.AutoSize = true;
             this.Label_Method.Location = new System.Drawing.Point(12, 199);
             this.Label_Method.Name = "Label_Method";
-            this.Label_Method.Size = new System.Drawing.Size(43, 13);
+            this.Label_Method.Size = new System.Drawing.Size(47, 13);
             this.Label_Method.TabIndex = 17;
-            this.Label_Method.Text = "Method";
+            this.Label_Method.Text = "Method*";
             // 
             // List_Exclusions
             // 
@@ -234,6 +249,9 @@
             this.List_Exclusions.Name = "List_Exclusions";
             this.List_Exclusions.Size = new System.Drawing.Size(100, 173);
             this.List_Exclusions.TabIndex = 18;
+            this.Tooltip_Fields.SetToolTip(this.List_Exclusions, "File/folders to exclude from the archive\r\nUse wildcard (*) for multiple files (e." +
+        "g. *.tmp)\r\nUse recursion for nested folders (e.g. if debug is present in multipl" +
+        "e places)");
             // 
             // Label_Exclusions
             // 
@@ -299,11 +317,21 @@
             this.Button_ExitWithSave.UseVisualStyleBackColor = true;
             this.Button_ExitWithSave.Click += new System.EventHandler(this.Button_ExitWithSave_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(602, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 13);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Ensure required fields (*) not empty";
+            // 
             // ArchivedItemEditingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 233);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Button_ExitWithSave);
             this.Controls.Add(this.Button_ExitWithoutSave);
             this.Controls.Add(this.Button_ExclusionsEdit);
@@ -366,5 +394,7 @@
         private System.Windows.Forms.Button Button_ExclusionsEdit;
         private System.Windows.Forms.Button Button_ExitWithoutSave;
         private System.Windows.Forms.Button Button_ExitWithSave;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolTip Tooltip_Fields;
     }
 }
