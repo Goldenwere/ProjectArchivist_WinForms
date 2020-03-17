@@ -10,6 +10,12 @@ using System.Windows.Forms;
 
 namespace ProjectArchivist
 {
+    public struct Errors
+    {
+        public const string ERR_NO_ITEM_SEL = "No item currently selected";
+        public const string ERR_NO_ITEMS_PRESENT = "There are no items in the list to remove";
+    }
+
     public partial class ErrorPrompt : Form
     {
         public ErrorPrompt(string errorMsg)

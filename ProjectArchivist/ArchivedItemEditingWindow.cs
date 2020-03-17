@@ -17,6 +17,7 @@ namespace ProjectArchivist
 
         ExclusionEditingWindow exclusionWindow;
         MainWindow parent;
+        ErrorPrompt error;
 
         public ArchivedItemEditingWindow(ArchivedItem _editingItem, MainWindow _parent)
         {
@@ -65,6 +66,17 @@ namespace ProjectArchivist
         {
             if (List_Exclusions.SelectedItem != null)
                 List_Exclusions.Items.Remove(List_Exclusions.SelectedItem);
+
+            else 
+            {
+                if (List_Exclusions.Items.Count == 0)
+                    error = new ErrorPrompt(Errors.ERR_NO_ITEMS_PRESENT);
+
+                else
+                    error = new ErrorPrompt(Errors.ERR_NO_ITEM_SEL);
+
+                error.ShowDialog();
+            }
         }
 
         private void Button_ExclusionsEdit_Click(object sender, EventArgs e)

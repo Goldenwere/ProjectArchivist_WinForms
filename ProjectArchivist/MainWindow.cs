@@ -13,6 +13,7 @@ namespace ProjectArchivist
     public partial class MainWindow : Form
     {
         ArchivedItemEditingWindow itemEditingWindow;
+        ErrorPrompt error;
         Dictionary<string, ArchivedItem> archivedItems;
         Dictionary<ArchivedItem, string> inverseSearchDict;
 
@@ -43,6 +44,17 @@ namespace ProjectArchivist
         {
             if (List_ArchivedItems.SelectedItem != null)
                 List_ArchivedItems.Items.Remove(List_ArchivedItems.SelectedItem);
+
+            else
+            {
+                if (List_ArchivedItems.Items.Count == 0)
+                    error = new ErrorPrompt(Errors.ERR_NO_ITEMS_PRESENT);
+
+                else
+                    error = new ErrorPrompt(Errors.ERR_NO_ITEM_SEL);
+
+                error.ShowDialog();
+            }
         }
 
         private void Button_EditArchivedItem_Click(object sender, EventArgs e)
