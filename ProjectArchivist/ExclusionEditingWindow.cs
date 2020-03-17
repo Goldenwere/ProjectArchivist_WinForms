@@ -23,6 +23,7 @@ namespace ProjectArchivist
             "If excluding any and all \"obj\" folders, check this box.\n" +
             "If excluding only the topmost \"obj\" folder, don't check this box.\n";
 
+        ErrorPrompt error;
         public bool isAdding;
         public ArchivedItemEditingWindow parent;
 
@@ -48,17 +49,36 @@ namespace ProjectArchivist
 
         private void Button_ExitWithSave_Click(object sender, EventArgs e)
         {
-            if (isAdding)
-                parent.CreateExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
-            else
-                parent.UpdatedEditedExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
+            if (ValidateEntry() == ErrorType.VALID)
+            {
+                if (isAdding)
+                    parent.CreateExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
+                else
+                    parent.UpdatedEditedExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
 
-            Close();
+                Close();
+            }
+
+            else
+            {
+                error = new ErrorPrompt(Errors.ERR_DUPL_EXCPTN);
+                error.ShowDialog();
+            }
         }
 
         private void Button_ExitWithoutSave_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private ErrorType ValidateEntry()
+        {
+            List<string> entries = parent.ExclusionRecursiveDefinitions.Keys.ToList();
+            foreach (string s in entries)
+                if (s == Textbox_Name.Text)
+                    return ErrorType.DUPLICATE;
+
+            return ErrorType.VALID;
         }
     }
 }

@@ -15,6 +15,8 @@ namespace ProjectArchivist
     {
         public ArchivedItem editingItem;
         public Dictionary<string, bool> exclusionRecursiveDefinitions;
+        public Dictionary<string, bool> ExclusionRecursiveDefinitions
+        { get { return exclusionRecursiveDefinitions; } }
 
         ExclusionEditingWindow exclusionWindow;
         MainWindow parent;
