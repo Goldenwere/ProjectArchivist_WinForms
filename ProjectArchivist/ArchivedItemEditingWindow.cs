@@ -21,15 +21,23 @@ namespace ProjectArchivist
         public ArchivedItemEditingWindow(ArchivedItem _editingItem, MainWindow _parent)
         {
             InitializeComponent();
+            exclusionRecursiveDefinitions = new Dictionary<string, bool>();
             editingItem = _editingItem;
             parent = _parent;
-            exclusionRecursiveDefinitions = new Dictionary<string, bool>();
+            if (editingItem == null)
+                Textbox_ItemName.Enabled = true;
+            else
+                Textbox_ItemName.Enabled = false;
 
             string[] types = Enum.GetNames(typeof(ArchiveType));
             Dropdown_FileType.Items.AddRange(types);
+            Dropdown_FileType.DropDownStyle = ComboBoxStyle.DropDownList;
+            Dropdown_FileType.SelectedIndex = 0;
 
             string[] methods = Enum.GetNames(typeof(CompressionMethod));
             Dropdown_Method.Items.AddRange(methods);
+            Dropdown_Method.DropDownStyle = ComboBoxStyle.DropDownList;
+            Dropdown_Method.SelectedIndex = 0;
         }
 
         public void LoadFields(ArchivedItem itemToLoad)
@@ -39,9 +47,9 @@ namespace ProjectArchivist
             Textbox_DestinationPath.Text = itemToLoad.destinationPath;
             Textbox_FileName.Text = itemToLoad.fileName;
             Textbox_Password.Text = itemToLoad.password;
-            Dropdown_FileType.SelectedItem = itemToLoad.type;
+            Dropdown_FileType.SelectedItem = itemToLoad.type.ToString();
             Numeric_CompLevel.Value = itemToLoad.compressionLevel;
-            Dropdown_Method.SelectedItem = itemToLoad.compressionMethod;
+            Dropdown_Method.SelectedItem = itemToLoad.compressionMethod.ToString();
 
             List_Exclusions.Items.AddRange(itemToLoad.exclusions.ToArray());
             exclusionRecursiveDefinitions = itemToLoad.exclusionRecursiveDefinitions;
