@@ -67,16 +67,8 @@ namespace ProjectArchivist
             if (List_Exclusions.SelectedItem != null)
                 List_Exclusions.Items.Remove(List_Exclusions.SelectedItem);
 
-            else 
-            {
-                if (List_Exclusions.Items.Count == 0)
-                    error = new ErrorPrompt(Errors.ERR_NO_ITEMS_PRESENT);
-
-                else
-                    error = new ErrorPrompt(Errors.ERR_NO_ITEM_SEL);
-
-                error.ShowDialog();
-            }
+            else
+                HandleListErrors();
         }
 
         private void Button_ExclusionsEdit_Click(object sender, EventArgs e)
@@ -89,6 +81,9 @@ namespace ProjectArchivist
                     exclusionRecursiveDefinitions[(string)List_Exclusions.SelectedItem]);
                 exclusionWindow.ShowDialog();
             }
+
+            else
+                HandleListErrors();
         }
 
         private void Button_ExitWithSave_Click(object sender, EventArgs e)
@@ -176,6 +171,17 @@ namespace ProjectArchivist
         {
             FolderBrowse_Destination.ShowDialog();
             Textbox_DestinationPath.Text = FolderBrowse_Destination.SelectedPath;
+        }
+
+        private void HandleListErrors()
+        {
+            if (List_Exclusions.Items.Count == 0)
+                error = new ErrorPrompt(Errors.ERR_NO_ITEMS_PRESENT);
+
+            else
+                error = new ErrorPrompt(Errors.ERR_NO_ITEM_SEL);
+
+            error.ShowDialog();
         }
     }
 }

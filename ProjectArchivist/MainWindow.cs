@@ -46,15 +46,7 @@ namespace ProjectArchivist
                 List_ArchivedItems.Items.Remove(List_ArchivedItems.SelectedItem);
 
             else
-            {
-                if (List_ArchivedItems.Items.Count == 0)
-                    error = new ErrorPrompt(Errors.ERR_NO_ITEMS_PRESENT);
-
-                else
-                    error = new ErrorPrompt(Errors.ERR_NO_ITEM_SEL);
-
-                error.ShowDialog();
-            }
+                HandleListErrors();
         }
 
         private void Button_EditArchivedItem_Click(object sender, EventArgs e)
@@ -65,6 +57,9 @@ namespace ProjectArchivist
                 itemEditingWindow.LoadFields(archivedItems[(string)List_ArchivedItems.SelectedItem]);
                 itemEditingWindow.ShowDialog();
             }
+
+            else
+                HandleListErrors();
         }
 
         public void CreateItem(ArchivedItem newItem)
@@ -111,6 +106,17 @@ namespace ProjectArchivist
         private void Button_CreateScript_Click(object sender, EventArgs e)
         {
             FileManagement.SaveFile(archivedItems.Values.ToList(), Textbox_BatchDestination.Text);
+        }
+
+        private void HandleListErrors()
+        {
+            if (List_ArchivedItems.Items.Count == 0)
+                error = new ErrorPrompt(Errors.ERR_NO_ITEMS_PRESENT);
+
+            else
+                error = new ErrorPrompt(Errors.ERR_NO_ITEM_SEL);
+
+            error.ShowDialog();
         }
     }
 }
