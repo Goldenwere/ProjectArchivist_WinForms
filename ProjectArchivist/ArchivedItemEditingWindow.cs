@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -91,11 +92,20 @@ namespace ProjectArchivist
             ErrorType errorType;
             if ((errorType = VerifyRequiredFields(out List<string> invalidItems)) != ErrorType.VALID)
             {
-                if (errorType == ErrorType.DUPLICATE)
-                    error = new ErrorPrompt(Errors.ERR_DUPL_ITEMS + string.Join("\n", invalidItems));
-
-                else
-                    error = new ErrorPrompt(Errors.ERR_MISSING_ITEMS + string.Join("\n", invalidItems));
+                switch (errorType)
+                {
+                    case ErrorType.DUPLICATE:
+                        error = new ErrorPrompt(Errors.ERR_DUPL_ITEMS + string.Join("\n", invalidItems));
+                        break;
+                    case ErrorType.INVALID:
+                        error = new ErrorPrompt(Errors.ERR_INVALID_ITEMS + string.Join("\n", invalidItems));
+                        break;
+                    case ErrorType.MISSING:
+                        error = new ErrorPrompt(Errors.ERR_MISSING_ITEMS + string.Join("\n", invalidItems));
+                        break;
+                    default:
+                        break;
+                }
             }
 
             else
@@ -202,21 +212,52 @@ namespace ProjectArchivist
             invalidItems = new List<string>();
 
             // First handle missing items
-            if (Textbox_ItemName.Text == null)
+            if (Textbox_ItemName.Text == "")
                 invalidItems.Add("- Item Name");
 
-            if (Textbox_SourcePath.Text == null)
+            if (Textbox_SourcePath.Text == "")
                 invalidItems.Add("- Source Path");
 
-            if (Textbox_DestinationPath.Text == null)
+            if (Textbox_DestinationPath.Text == "")
                 invalidItems.Add("- Destination Path");
 
-            if (Textbox_FileName.Text == null)
+            if (Textbox_FileName.Text == "")
                 invalidItems.Add("- File Name");
 
             // Exit early for missing items
             if (invalidItems.Count > 0)
                 return ErrorType.MISSING;
+
+            // Now handle invalid items
+            try
+            {
+                System.IO.Path.GetFullPath(Textbox_SourcePath.Text);
+            }
+            catch (Exception e)
+            {
+                invalidItems.Add("- Source Path");
+            }
+
+            try
+            {
+                System.IO.Path.GetFullPath(Textbox_DestinationPath.Text);
+            }
+            catch (Exception e)
+            {
+                invalidItems.Add("- Destination Path");
+            }
+
+            try
+            {
+                System.IO.Path.GetFullPath(Textbox_FileName.Text);
+            }
+            catch (Exception e)
+            {
+                invalidItems.Add("- File Name");
+            }
+
+            if (invalidItems.Count > 0)
+                return ErrorType.INVALID;
 
             // Now handle duplicates
             List<ArchivedItem> items = parent.ArchivedItems.Values.ToList();

@@ -16,13 +16,15 @@ namespace ProjectArchivist
         public const string ERR_NO_ITEMS_PRESENT = "There are no items in the list";
         public const string ERR_DUPL_ITEMS = "Duplicate entries in fields: \n";
         public const string ERR_MISSING_ITEMS = "Missing entries in fields: \n";
+        public const string ERR_INVALID_ITEMS = "Invalid entries (look for invalid path/file characters) in fields: \n";
     }
 
     public enum ErrorType
     {
         VALID,
         DUPLICATE,
-        MISSING
+        MISSING,
+        INVALID
     }
 
     public partial class ErrorPrompt : Form
