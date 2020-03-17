@@ -16,7 +16,9 @@ namespace ProjectArchivist
         public const string ERR_NO_ITEMS_PRESENT = "There are no items in the list";
         public const string ERR_DUPL_ITEMS = "Duplicate entries in fields: \n";
         public const string ERR_MISSING_ITEMS = "Missing entries in fields: \n";
-        public const string ERR_INVALID_ITEMS = "Invalid entries (look for invalid path/file characters) in fields: \n";
+        public const string ERR_INVALID_ITEMS = "Invalid entries in fields: \n";
+        public const string HINT_INVALID_ITEMS = "\nLook for invalid path/file characters";
+        public const string ERR_GLOBAL_DUPL = "Cannot apply globals due to duplicate file names: \n";
     }
 
     public enum ErrorType

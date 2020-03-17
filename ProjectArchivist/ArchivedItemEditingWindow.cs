@@ -98,7 +98,7 @@ namespace ProjectArchivist
                         error = new ErrorPrompt(Errors.ERR_DUPL_ITEMS + string.Join("\n", invalidItems));
                         break;
                     case ErrorType.INVALID:
-                        error = new ErrorPrompt(Errors.ERR_INVALID_ITEMS + string.Join("\n", invalidItems));
+                        error = new ErrorPrompt(Errors.ERR_INVALID_ITEMS + string.Join("\n", invalidItems) + Errors.HINT_INVALID_ITEMS);
                         break;
                     case ErrorType.MISSING:
                         error = new ErrorPrompt(Errors.ERR_MISSING_ITEMS + string.Join("\n", invalidItems));
@@ -106,6 +106,8 @@ namespace ProjectArchivist
                     default:
                         break;
                 }
+
+                error.ShowDialog();
             }
 
             else
@@ -154,9 +156,9 @@ namespace ProjectArchivist
 
                     parent.UpdateEditedItem(editingItem);
                 }
-            }
 
-            Close();
+                Close();
+            }
         }
 
         private void Button_ExitWithoutSave_Click(object sender, EventArgs e)

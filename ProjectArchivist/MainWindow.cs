@@ -94,15 +94,25 @@ namespace ProjectArchivist
         private void Button_ApplyGlobals_Click(object sender, EventArgs e)
         {
             List<ArchivedItem> items = archivedItems.Values.ToList();
-            foreach(ArchivedItem item in items)
+            ErrorType errorType;
+            if ((errorType = ValidateGlobalDestination(items, out List<string> duplicates)) != ErrorType.VALID)
             {
-                item.password = Textbox_GlobalPassword.Text;
-                item.type = (ArchiveType)Enum.Parse(
-                    typeof(ArchiveType), Dropdown_GlobalFileType.SelectedItem.ToString());
-                item.compressionMethod = (CompressionMethod)Enum.Parse(
-                    typeof(CompressionMethod), Dropdown_GlobalMethod.SelectedItem.ToString());
-                item.compressionLevel = (int)Numeric_CompLevel.Value;
-                item.destinationPath = Textbox_GlobalDestination.Text;
+                error = new ErrorPrompt(Errors.ERR_GLOBAL_DUPL + string.Join("\n", duplicates));
+                error.ShowDialog();
+            }
+
+            else
+            {
+                foreach (ArchivedItem item in items)
+                {
+                    item.password = Textbox_GlobalPassword.Text;
+                    item.type = (ArchiveType)Enum.Parse(
+                        typeof(ArchiveType), Dropdown_GlobalFileType.SelectedItem.ToString());
+                    item.compressionMethod = (CompressionMethod)Enum.Parse(
+                        typeof(CompressionMethod), Dropdown_GlobalMethod.SelectedItem.ToString());
+                    item.compressionLevel = (int)Numeric_CompLevel.Value;
+                    item.destinationPath = Textbox_GlobalDestination.Text;
+                }
             }
         }
 
@@ -120,6 +130,22 @@ namespace ProjectArchivist
                 error = new ErrorPrompt(Errors.ERR_NO_ITEM_SEL);
 
             error.ShowDialog();
+        }
+
+        private ErrorType ValidateGlobalDestination(List<ArchivedItem> items, out List<string> duplicates)
+        {
+            duplicates = new List<string>();
+
+            foreach (ArchivedItem itemA in items)
+                foreach (ArchivedItem itemB in items)
+                    if (itemA != itemB)
+                        if (itemA.fileName == itemB.fileName)
+                            duplicates.Add("- Conflict between " + itemA.itemName + " and " + itemB.itemName);
+
+            if (duplicates.Count > 0)
+                return ErrorType.DUPLICATE;
+            else
+                return ErrorType.VALID;
         }
     }
 }
