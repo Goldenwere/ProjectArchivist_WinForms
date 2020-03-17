@@ -251,6 +251,7 @@
             this.Button_ExclusionsAdd.TabIndex = 20;
             this.Button_ExclusionsAdd.Text = "Add";
             this.Button_ExclusionsAdd.UseVisualStyleBackColor = true;
+            this.Button_ExclusionsAdd.Click += new System.EventHandler(this.Button_ExclusionsAdd_Click);
             // 
             // Button_ExclusionsRemove
             // 
@@ -261,6 +262,7 @@
             this.Button_ExclusionsRemove.TabIndex = 21;
             this.Button_ExclusionsRemove.Text = "Remove";
             this.Button_ExclusionsRemove.UseVisualStyleBackColor = true;
+            this.Button_ExclusionsRemove.Click += new System.EventHandler(this.Button_ExclusionsRemove_Click);
             // 
             // Button_ExclusionsEdit
             // 
@@ -271,6 +273,7 @@
             this.Button_ExclusionsEdit.TabIndex = 22;
             this.Button_ExclusionsEdit.Text = "Edit";
             this.Button_ExclusionsEdit.UseVisualStyleBackColor = true;
+            this.Button_ExclusionsEdit.Click += new System.EventHandler(this.Button_ExclusionsEdit_Click);
             // 
             // Button_ExitWithoutSave
             // 
@@ -281,6 +284,7 @@
             this.Button_ExitWithoutSave.TabIndex = 23;
             this.Button_ExitWithoutSave.Text = "Exit Without Saving";
             this.Button_ExitWithoutSave.UseVisualStyleBackColor = true;
+            this.Button_ExitWithoutSave.Click += new System.EventHandler(this.Button_ExitWithoutSave_Click);
             // 
             // Button_ExitWithSave
             // 
@@ -291,6 +295,7 @@
             this.Button_ExitWithSave.TabIndex = 24;
             this.Button_ExitWithSave.Text = "Save Item And Exit";
             this.Button_ExitWithSave.UseVisualStyleBackColor = true;
+            this.Button_ExitWithSave.Click += new System.EventHandler(this.Button_ExitWithSave_Click);
             // 
             // ArchivedItemEditingWindow
             // 

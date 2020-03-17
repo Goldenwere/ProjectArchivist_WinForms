@@ -23,7 +23,7 @@ namespace ProjectArchivist
 
         private void Button_AddArchivedItem_Click(object sender, EventArgs e)
         {
-            itemEditingWindow = new ArchivedItemEditingWindow(true);
+            itemEditingWindow = new ArchivedItemEditingWindow(true, this);
             itemEditingWindow.ShowDialog();
         }
 
@@ -36,7 +36,7 @@ namespace ProjectArchivist
         {
             if (List_ArchivedItems.SelectedItem != null)
             {
-                itemEditingWindow = new ArchivedItemEditingWindow(false);
+                itemEditingWindow = new ArchivedItemEditingWindow(false, this);
                 itemEditingWindow.LoadFields(archivedItems[(string)List_ArchivedItems.SelectedItem]);
                 itemEditingWindow.ShowDialog();
             }

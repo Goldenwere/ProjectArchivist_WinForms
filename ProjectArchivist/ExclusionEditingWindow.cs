@@ -23,11 +23,20 @@ namespace ProjectArchivist
             "If excluding any and all \"obj\" folders, check this box.\n" +
             "If excluding only the topmost \"obj\" folder, don't check this box.\n";
 
-        public ExclusionEditingWindow()
+        public bool isAdding;
+
+        public ExclusionEditingWindow(bool _isAdding)
         {
             InitializeComponent();
             Tooltip_Exclusion.SetToolTip(Textbox_Name, exclusionTooltip);
             Tooltip_Recursion.SetToolTip(Checkbox_IsRecursive, recursionTooltip);
+            isAdding = _isAdding;
+        }
+
+        public void LoadFields(string name, bool isRecursive)
+        {
+            Textbox_Name.Text = name;
+            Checkbox_IsRecursive.Checked = isRecursive;
         }
     }
 }
