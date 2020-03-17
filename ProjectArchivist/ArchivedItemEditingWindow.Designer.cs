@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArchivedItemEditingWindow));
             this.Label_ItemName = new System.Windows.Forms.Label();
             this.Textbox_ItemName = new System.Windows.Forms.TextBox();
             this.Label_SourcePath = new System.Windows.Forms.Label();
@@ -266,6 +267,8 @@
             // 
             this.Button_ExclusionsAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Button_ExclusionsAdd.Location = new System.Drawing.Point(506, 38);
+            this.Button_ExclusionsAdd.MaximumSize = new System.Drawing.Size(60, 50);
+            this.Button_ExclusionsAdd.MinimumSize = new System.Drawing.Size(60, 50);
             this.Button_ExclusionsAdd.Name = "Button_ExclusionsAdd";
             this.Button_ExclusionsAdd.Size = new System.Drawing.Size(60, 50);
             this.Button_ExclusionsAdd.TabIndex = 20;
@@ -357,6 +360,7 @@
             this.Controls.Add(this.Label_SourcePath);
             this.Controls.Add(this.Textbox_ItemName);
             this.Controls.Add(this.Label_ItemName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ArchivedItemEditingWindow";
             this.Text = "Editing item...";
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_CompLevel)).EndInit();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.Button_AddArchivedItem = new System.Windows.Forms.Button();
             this.Button_RemoveArchivedItem = new System.Windows.Forms.Button();
             this.Button_EditArchivedItem = new System.Windows.Forms.Button();
@@ -321,6 +322,9 @@
             this.Controls.Add(this.Group_File);
             this.Controls.Add(this.Group_Globals);
             this.Controls.Add(this.Group_ArchiveList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(595, 503);
+            this.MinimumSize = new System.Drawing.Size(595, 503);
             this.Name = "MainWindow";
             this.Text = "Project Archivist";
             this.Group_ArchiveList.ResumeLayout(false);

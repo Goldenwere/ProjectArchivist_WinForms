@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExclusionEditingWindow));
             this.Textbox_Name = new System.Windows.Forms.TextBox();
             this.Label_Name = new System.Windows.Forms.Label();
             this.Checkbox_IsRecursive = new System.Windows.Forms.CheckBox();
@@ -97,6 +98,9 @@
             this.Controls.Add(this.Checkbox_IsRecursive);
             this.Controls.Add(this.Textbox_Name);
             this.Controls.Add(this.Label_Name);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(450, 134);
+            this.MinimumSize = new System.Drawing.Size(450, 134);
             this.Name = "ExclusionEditingWindow";
             this.Text = "ExclusionEditingWindow";
             this.ResumeLayout(false);

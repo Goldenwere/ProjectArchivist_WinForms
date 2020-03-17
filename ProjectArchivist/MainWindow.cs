@@ -122,12 +122,16 @@ namespace ProjectArchivist
             Exception ex = FileManagement.SaveFile(archivedItems.Values.ToList(), Textbox_BatchDestination.Text);
 
             if (ex != null)
-                msg = new GeneralMessageForm("Error: " + ex.Message);
+            {
+                error = new ErrorPrompt("Error: " + ex.Message);
+                error.ShowDialog();
+            }
 
             else
+            {
                 msg = new GeneralMessageForm("Created script successfully");
-
-            msg.ShowDialog();
+                msg.ShowDialog();
+            }
         }
 
         private void HandleListErrors()

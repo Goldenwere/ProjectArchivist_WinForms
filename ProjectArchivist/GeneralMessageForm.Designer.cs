@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralMessageForm));
             this.Label_Status = new System.Windows.Forms.Label();
             this.Button_Close = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -59,6 +60,9 @@
             this.ClientSize = new System.Drawing.Size(284, 111);
             this.Controls.Add(this.Button_Close);
             this.Controls.Add(this.Label_Status);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(300, 150);
+            this.MinimumSize = new System.Drawing.Size(300, 150);
             this.Name = "GeneralMessageForm";
             this.Text = "Status";
             this.ResumeLayout(false);

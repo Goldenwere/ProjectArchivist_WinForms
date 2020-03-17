@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorPrompt));
             this.Label_Heading = new System.Windows.Forms.Label();
             this.Label_ErrorDesc = new System.Windows.Forms.Label();
             this.Button_Close = new System.Windows.Forms.Button();
@@ -69,6 +70,9 @@
             this.Controls.Add(this.Button_Close);
             this.Controls.Add(this.Label_ErrorDesc);
             this.Controls.Add(this.Label_Heading);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(300, 300);
+            this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "ErrorPrompt";
             this.Text = "An error has occurred";
             this.ResumeLayout(false);
