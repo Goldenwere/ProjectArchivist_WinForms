@@ -31,8 +31,13 @@ namespace ProjectArchivist
             InitializeComponent();
             Tooltip_Exclusion.SetToolTip(Textbox_Name, exclusionTooltip);
             Tooltip_Recursion.SetToolTip(Checkbox_IsRecursive, recursionTooltip);
-            isAdding = _isAdding;
+
             parent = _parent;
+            isAdding = _isAdding;
+            if (isAdding)
+                Textbox_Name.Enabled = true;
+            else
+                Textbox_Name.Enabled = false;
         }
 
         public void LoadFields(string name, bool isRecursive)
@@ -43,9 +48,11 @@ namespace ProjectArchivist
 
         private void Button_ExitWithSave_Click(object sender, EventArgs e)
         {
-            parent.CreateExclusion(
-                Textbox_Name.Text,
-                Checkbox_IsRecursive.Checked);
+            if (isAdding)
+                parent.CreateExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
+            else
+                parent.UpdatedEditedExclusion(Textbox_Name.Text, Checkbox_IsRecursive.Checked);
+
             Close();
         }
 

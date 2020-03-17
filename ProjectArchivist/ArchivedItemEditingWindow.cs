@@ -12,17 +12,18 @@ namespace ProjectArchivist
 {
     public partial class ArchivedItemEditingWindow : Form
     {
-        public bool isAdding;
+        public ArchivedItem editingItem;
         public Dictionary<string, bool> exclusionRecursiveDefinitions;
 
         ExclusionEditingWindow exclusionWindow;
         MainWindow parent;
 
-        public ArchivedItemEditingWindow(bool _isAdding, MainWindow _parent)
+        public ArchivedItemEditingWindow(ArchivedItem _editingItem, MainWindow _parent)
         {
             InitializeComponent();
-            isAdding = _isAdding;
+            editingItem = _editingItem;
             parent = _parent;
+            exclusionRecursiveDefinitions = new Dictionary<string, bool>();
 
             string[] types = Enum.GetNames(typeof(ArchiveType));
             Dropdown_FileType.Items.AddRange(types);
@@ -48,7 +49,7 @@ namespace ProjectArchivist
 
         private void Button_ExclusionsAdd_Click(object sender, EventArgs e)
         {
-            exclusionWindow = new ExclusionEditingWindow(false, this);
+            exclusionWindow = new ExclusionEditingWindow(true, this);
             exclusionWindow.ShowDialog();
         }
 
@@ -71,25 +72,51 @@ namespace ProjectArchivist
 
         private void Button_ExitWithSave_Click(object sender, EventArgs e)
         {
-            ArchivedItem newItem = new ArchivedItem();
-            newItem.itemName = Textbox_ItemName.Text;
-            newItem.sourcePath = Textbox_SourcePath.Text;
-            newItem.destinationPath = Textbox_DestinationPath.Text;
-            newItem.fileName = Textbox_FileName.Text;
-            newItem.password = Textbox_Password.Text;
+            if (editingItem == null)
+            {
+                ArchivedItem newItem = new ArchivedItem();
+                newItem.itemName = Textbox_ItemName.Text;
+                newItem.sourcePath = Textbox_SourcePath.Text;
+                newItem.destinationPath = Textbox_DestinationPath.Text;
+                newItem.fileName = Textbox_FileName.Text;
+                newItem.password = Textbox_Password.Text;
 
-            newItem.exclusions = new List<string>();
-            foreach (object o in List_Exclusions.Items)
-                newItem.exclusions.Add((string)o);
-            newItem.exclusionRecursiveDefinitions = exclusionRecursiveDefinitions;
+                newItem.exclusions = new List<string>();
+                foreach (object o in List_Exclusions.Items)
+                    newItem.exclusions.Add((string)o);
+                newItem.exclusionRecursiveDefinitions = exclusionRecursiveDefinitions;
 
-            newItem.type = (ArchiveType)Enum.Parse(
-                typeof(ArchiveType), Dropdown_FileType.SelectedItem.ToString());
-            newItem.compressionLevel = (int)Numeric_CompLevel.Value;
-            newItem.compressionMethod = (CompressionMethod)Enum.Parse(
-                typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
+                newItem.type = (ArchiveType)Enum.Parse(
+                    typeof(ArchiveType), Dropdown_FileType.SelectedItem.ToString());
+                newItem.compressionLevel = (int)Numeric_CompLevel.Value;
+                newItem.compressionMethod = (CompressionMethod)Enum.Parse(
+                    typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
 
-            parent.CreateItem(newItem);
+                parent.CreateItem(newItem);
+            }
+
+            else
+            {
+                editingItem.itemName = Textbox_ItemName.Text;
+                editingItem.sourcePath = Textbox_SourcePath.Text;
+                editingItem.destinationPath = Textbox_DestinationPath.Text;
+                editingItem.fileName = Textbox_FileName.Text;
+                editingItem.password = Textbox_Password.Text;
+
+                editingItem.exclusions = new List<string>();
+                foreach (object o in List_Exclusions.Items)
+                    editingItem.exclusions.Add((string)o);
+                editingItem.exclusionRecursiveDefinitions = exclusionRecursiveDefinitions;
+
+                editingItem.type = (ArchiveType)Enum.Parse(
+                    typeof(ArchiveType), Dropdown_FileType.SelectedItem.ToString());
+                editingItem.compressionLevel = (int)Numeric_CompLevel.Value;
+                editingItem.compressionMethod = (CompressionMethod)Enum.Parse(
+                    typeof(CompressionMethod), Dropdown_Method.SelectedItem.ToString());
+
+                parent.UpdateEditedItem(editingItem);
+            }
+
             Close();
         }
 
@@ -102,6 +129,11 @@ namespace ProjectArchivist
         {
             exclusionRecursiveDefinitions.Add(name, isRecursive);
             List_Exclusions.Items.Add(name);
+        }
+
+        public void UpdatedEditedExclusion(string name, bool isRecursive)
+        {
+            exclusionRecursiveDefinitions[name] = isRecursive;
         }
     }
 }
