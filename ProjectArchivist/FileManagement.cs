@@ -20,8 +20,8 @@ public static class FileManagement
     const string PARAM_LEVEL = "-mx=";
     const string PARAM_ENCRYPT = "-mhe";
     const string PARAM_PASS = "-p";
-    const string PARAM_EXCLUDE = "-x!";
-    const string PARAM_EXCLUDE_RECURSIVE = "-xr!";
+    const string PARAM_EXCLUDE = "-x!\"";
+    const string PARAM_EXCLUDE_RECURSIVE = "-xr!\"";
     const string PARAM_TYPE = "-t";
 
     const string EXTENSION_SEVENZIP = "7z";
@@ -77,9 +77,9 @@ public static class FileManagement
                 foreach(string s in item.exclusions)
                 {
                     if (item.exclusionRecursiveDefinitions[s])
-                        working += PARAM_EXCLUDE_RECURSIVE + s + SPACE;
+                        working += PARAM_EXCLUDE_RECURSIVE + s + "\"" + SPACE;
                     else
-                        working += PARAM_EXCLUDE + s + SPACE;
+                        working += PARAM_EXCLUDE + s + "\"" + SPACE;
                 }
 
                 working += QUOTE + item.destinationPath + "\\" + item.fileName;
