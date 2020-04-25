@@ -11,7 +11,7 @@ public static class FileManagement
         "@echo off\n" +
         "echo This script was created with Project Archivist v0.1\n" +
         "echo Beginning archiving...";
-    const string MSG_CURRENT_PREFIX = "Archiving: ";
+    const string MSG_CURRENT_PREFIX = "echo Archiving: ";
 
     const string CMD = "7z a";
     const string SPACE = " ";
