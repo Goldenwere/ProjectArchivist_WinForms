@@ -17,11 +17,9 @@ Total: ~9.5hrs
 
 ## Roadmap
 
-Currently, Archivist essentially "works" in that it does its intended purpose - creating a batch file based on form input. It also handles numerous error situations. Please open an issue if more arise that weren't originally caught in development.
+Currently, Archivist essentially "works" in that it does its intended purpose - creating a batch file based on form input. It also handles numerous error situations. Archivist using Windows Forms is no longer actively worked on. Instead, see [the Electron version of the program](https://github.com/Goldenwere/ProjectArchivist_Electron) for a more updated application.
 
-### Missing Advanced Features
+### Originally Intended Features
+These were some ideas had during development that are instead now intended for the Electron version of the program:  
 - Workable Settings File: In addition to .bat file creation, create a .xml file that the program can load for easy editing of a pre-existing .bat file
-
-### Missing UX Features
 - Themes: Implement dark/light theme; research whether Windows 10 system theme is exposed to WinForms or if restricted to UWP only
-- Code Documentation: Not yet available (sorry, wanted to get the core of the program running before bed)
