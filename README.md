@@ -6,7 +6,7 @@ Project Archivist is a Windows Forms application used for creating batch script 
 
 ## Origin
 
-Archivist stemmed from a need to re-write a batch file due to a folder re-structuring but a desire to avoid making edits manually and potentially making typos that may not be discovered until after the script is first executed. Rather than determining if such a thing exists, Archivist was created for practice in writing code that would end up being used for an actual recurring purpose. Archivist was also an attempt to create a fully functional, purposeful program in under 24 hours. This attempt was successful: development started 2020/03/16 7:30pm EST, and the first viable commit, [a86bdf3](../../commit/1523dbdedc91d1c9fe10347486e9b8f4f57d22a4), was made 2020/03/17 6:19pm EST*. 
+Archivist stemmed from a need to re-write a batch file due to a folder re-structuring but a desire to avoid making edits manually and potentially making typos that may not be discovered until after the script is first executed. Rather than determining if such a thing exists, Archivist was created for practice in writing code that would end up being used for an actual recurring purpose. Archivist was also an attempt to create a fully functional, purposeful program in under 24 hours. This attempt was successful: development started 2020/03/16 7:30pm EST, and the first viable commit, [1523dbd](../../commit/1523dbdedc91d1c9fe10347486e9b8f4f57d22a4), was made 2020/03/17 6:19pm EST*. 
 \*Actual time spent:  
 7:30p-1:00a (5.5hr)  
 1:05p-1:35p (0.5hr)  

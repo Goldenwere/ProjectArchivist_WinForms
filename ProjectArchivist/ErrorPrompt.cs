@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 
 namespace ProjectArchivist
 {
+    /// <summary>
+    /// Holds strings that can be loaded into labels when errors occur
+    /// </summary>
     public struct Errors
     {
         public const string ERR_NO_ITEM_SEL = "No item currently selected";
@@ -24,16 +20,41 @@ namespace ProjectArchivist
         public const string ERR_MISSING_EXCPTN = "Missing entry for exception name field";
     }
 
+    /// <summary>
+    /// Defines possible errors that can be encountered in the program
+    /// </summary>
     public enum ErrorType
     {
+        /// <summary>
+        /// Indicates no error found
+        /// </summary>
         VALID,
+
+        /// <summary>
+        /// Indicates that an entry is a duplicate of another
+        /// </summary>
         DUPLICATE,
+
+        /// <summary>
+        /// Indicates that something is missing from the entry
+        /// </summary>
         MISSING,
+
+        /// <summary>
+        /// Indicates that something is wrong with an entry
+        /// </summary>
         INVALID
     }
 
+    /// <summary>
+    /// The error prompt is a window used for providing information to the user about errors that occurred
+    /// </summary>
     public partial class ErrorPrompt : Form
     {
+        /// <summary>
+        /// Constructs an error window with a defined message
+        /// </summary>
+        /// <param name="errorMsg">The message to display to the user</param>
         public ErrorPrompt(string errorMsg)
         {
             InitializeComponent();
@@ -42,6 +63,9 @@ namespace ProjectArchivist
             sound.Play();
         }
 
+        /// <summary>
+        /// The close button closes the error window
+        /// </summary>
         private void Button_Close_Click(object sender, EventArgs e)
         {
             Close();

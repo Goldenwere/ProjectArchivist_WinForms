@@ -55,7 +55,7 @@ public enum CompressionMethod
     PPMd,
 
     /// <summary>
-    /// Based off of Burrows–Wheeler algorithm
+    /// Based off of Burrows–Wheeler algorithm, an alternative for text files
     /// </summary>
     BZip2
 }

@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectArchivist
 {
+    /// <summary>
+    /// The exclusion editor displays inputs for creating or editing exclusions associated with ArchivedItems
+    /// </summary>
     public partial class ExclusionEditingWindow : Form
     {
         const string exclusionTooltip =
@@ -23,10 +21,17 @@ namespace ProjectArchivist
             "If excluding any and all \"obj\" folders, check this box.\n" +
             "If excluding only the topmost \"obj\" folder, don't check this box.\n";
 
+        // Windows associated with the editor
         ErrorPrompt error;
-        public bool isAdding;
         public ArchivedItemEditingWindow parent;
 
+        // Whether the exclusion editor is adding (otherwise editing) an exclusion; 
+        // used for determining what to call on the parent and for enabling/disabling the name textbox
+        public bool isAdding;
+
+        /// <summary>
+        /// Constructs an exclusion editor window and associates its parent and whether it is adding or editing
+        /// </summary>
         public ExclusionEditingWindow(bool _isAdding, ArchivedItemEditingWindow _parent)
         {
             InitializeComponent();
@@ -41,12 +46,20 @@ namespace ProjectArchivist
                 Textbox_Name.Enabled = false;
         }
 
+        /// <summary>
+        /// Loads fields when editing an exclusion; called from the parent
+        /// </summary>
+        /// <param name="name">The name of the exclusion</param>
+        /// <param name="isRecursive">The recursive setting of the exclusion</param>
         public void LoadFields(string name, bool isRecursive)
         {
             Textbox_Name.Text = name;
             Checkbox_IsRecursive.Checked = isRecursive;
         }
 
+        /// <summary>
+        /// The exit-with-save button saves the exclusion before closing the window
+        /// </summary>
         private void Button_ExitWithSave_Click(object sender, EventArgs e)
         {
             switch(ValidateEntry())
@@ -71,11 +84,18 @@ namespace ProjectArchivist
             }
         }
 
+        /// <summary>
+        /// The exit-without-save button closes the editor window without saving the exclusion beforehand
+        /// </summary>
         private void Button_ExitWithoutSave_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// Ensures that the exclusion entered is not empty or a duplicate
+        /// </summary>
+        /// <returns>The error, if any, found when validating the exclusion</returns>
         private ErrorType ValidateEntry()
         {
             if (Textbox_Name.Text == "")

@@ -1,27 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectArchivist
 {
+    /// <summary>
+    /// The item editor window displays inputs for creating or editing archived items
+    /// </summary>
     public partial class ArchivedItemEditingWindow : Form
     {
+        // Working set
         public ArchivedItem editingItem;
         public Dictionary<string, bool> exclusionRecursiveDefinitions;
         public Dictionary<string, bool> ExclusionRecursiveDefinitions
         { get { return exclusionRecursiveDefinitions; } }
 
+        // Windows associated with the editor
         ExclusionEditingWindow exclusionWindow;
         MainWindow parent;
         ErrorPrompt error;
 
+        /// <summary>
+        /// Constructs and sets up an item editor window
+        /// </summary>
+        /// <param name="_editingItem">An item to edit, otherwise leave null for item creation</param>
+        /// <param name="_parent">The editor's parent window</param>
         public ArchivedItemEditingWindow(ArchivedItem _editingItem, MainWindow _parent)
         {
             InitializeComponent();
@@ -58,6 +62,10 @@ namespace ProjectArchivist
                 Textbox_ItemName.Enabled = false;
         }
 
+        /// <summary>
+        /// Load fields when editing an item; called from the parent
+        /// </summary>
+        /// <param name="itemToLoad">The item whose values are to fill the window's fields with</param>
         public void LoadFields(ArchivedItem itemToLoad)
         {
             Textbox_ItemName.Text = itemToLoad.itemName;
@@ -73,12 +81,18 @@ namespace ProjectArchivist
             exclusionRecursiveDefinitions = itemToLoad.exclusionRecursiveDefinitions;
         }
 
+        /// <summary>
+        /// The exclusions add button opens the exclusion editing window
+        /// </summary>
         private void Button_ExclusionsAdd_Click(object sender, EventArgs e)
         {
             exclusionWindow = new ExclusionEditingWindow(true, this);
             exclusionWindow.ShowDialog();
         }
 
+        /// <summary>
+        /// The exclusions remove button removes an exclusion from the list unless there is an error
+        /// </summary>
         private void Button_ExclusionsRemove_Click(object sender, EventArgs e)
         {
             if (List_Exclusions.SelectedItem != null)
@@ -88,6 +102,9 @@ namespace ProjectArchivist
                 HandleListErrors();
         }
 
+        /// <summary>
+        /// The exclusions edit button edits an exclusion unless there is an error
+        /// </summary>
         private void Button_ExclusionsEdit_Click(object sender, EventArgs e)
         {
             if (List_Exclusions.SelectedItem != null)
@@ -103,6 +120,9 @@ namespace ProjectArchivist
                 HandleListErrors();
         }
 
+        /// <summary>
+        /// The exit-with-save button saves an item before closing the item editor as long as there are no errors
+        /// </summary>
         private void Button_ExitWithSave_Click(object sender, EventArgs e)
         {
             ErrorType errorType;
@@ -177,11 +197,17 @@ namespace ProjectArchivist
             }
         }
 
+        /// <summary>
+        /// The exit-without-save button closes the editor without saving beforehand
+        /// </summary>
         private void Button_ExitWithoutSave_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// Adds an exclusion to the item
+        /// </summary>
         public void CreateExclusion(string name, bool isRecursive)
         {
             exclusionRecursiveDefinitions.Add(name, isRecursive);
@@ -193,6 +219,9 @@ namespace ProjectArchivist
             }
         }
 
+        /// <summary>
+        /// Updates an existing exclusion of the item
+        /// </summary>
         public void UpdatedEditedExclusion(string name, bool isRecursive)
         {
             exclusionRecursiveDefinitions[name] = isRecursive;
@@ -202,18 +231,27 @@ namespace ProjectArchivist
             }
         }
 
+        /// <summary>
+        /// The source browse button opens a folder browser dialog to choose a source path
+        /// </summary>
         private void Button_Source_Click(object sender, EventArgs e)
         {
             FolderBrowser.ShowDialog();
             Textbox_SourcePath.Text = FolderBrowser.SelectedPath;
         }
 
+        /// <summary>
+        /// The destination button opens a folder browser dialog to choose a destination path
+        /// </summary>
         private void Button_Destination_Click(object sender, EventArgs e)
         {
             FolderBrowser.ShowDialog();
             Textbox_DestinationPath.Text = FolderBrowser.SelectedPath;
         }
 
+        /// <summary>
+        /// Opens an error window when there's problems with a user action involving the list
+        /// </summary>
         private void HandleListErrors()
         {
             if (List_Exclusions.Items.Count == 0)
@@ -225,6 +263,11 @@ namespace ProjectArchivist
             error.ShowDialog();
         }
 
+        /// <summary>
+        /// Ensures required editor fields are valid for the item
+        /// </summary>
+        /// <param name="invalidItems">Any invalid entries found in the list</param>
+        /// <returns>An error if any found in the editor's fields</returns>
         private ErrorType VerifyRequiredFields(out List<string> invalidItems)
         {
             invalidItems = new List<string>();

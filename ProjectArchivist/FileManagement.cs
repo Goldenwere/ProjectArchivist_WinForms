@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
+/// <summary>
+/// Contains file IO functionality related to the program
+/// </summary>
 public static class FileManagement
 {
     const string MSG_BEGIN = 
@@ -32,6 +32,12 @@ public static class FileManagement
     const string TYPE_BZIP2 = "-m0=BZip2";
     const string TYPE_PPMD = "-m0=PPMd";
 
+    /// <summary>
+    /// Saves a set of ArchivedItems to a designated path
+    /// </summary>
+    /// <param name="itemsToSave">The items to save</param>
+    /// <param name="path">The file path to write to</param>
+    /// <returns>An exception if one was caught, otherwise null</returns>
     public static Exception SaveFile(List<ArchivedItem> itemsToSave, string path)
     {
         StreamWriter writer = null;
@@ -77,9 +83,9 @@ public static class FileManagement
                 foreach(string s in item.exclusions)
                 {
                     if (item.exclusionRecursiveDefinitions[s])
-                        working += PARAM_EXCLUDE_RECURSIVE + s + "\"" + SPACE;
+                        working += PARAM_EXCLUDE_RECURSIVE + s + QUOTE + SPACE;
                     else
-                        working += PARAM_EXCLUDE + s + "\"" + SPACE;
+                        working += PARAM_EXCLUDE + s + QUOTE + SPACE;
                 }
 
                 working += QUOTE + item.destinationPath + "\\" + item.fileName;
