@@ -17,7 +17,7 @@ Total: ~9.5hrs
 
 ## Roadmap
 
-Currently, Archivist essentially "works" in that it does its intended purpose - creating a batch file based on form input. It also handles numerous error situations. Archivist using Windows Forms is no longer actively worked on. Instead, see [the Electron version of the program](https://github.com/Goldenwere/ProjectArchivist_Electron) for a more updated application.
+As of [v0.2](../../releases/tag/v0.2), Archivist essentially "works" in that it does its intended purpose - creating a batch file based on form input. It also handles numerous error situations. Archivist using Windows Forms is no longer actively worked on or supported. Instead, see [the Electron version of the program](https://github.com/Goldenwere/ProjectArchivist_Electron) for a more updated application.
 
 ### Originally Intended Features
 These were some ideas had during development that are instead now intended for the Electron version of the program:  
